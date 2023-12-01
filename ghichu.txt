@@ -1,1 +1,1 @@
-
+chạy trang index.php đầu tiên là trang chủ
