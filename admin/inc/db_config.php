@@ -107,5 +107,26 @@ function insert($sql, $values, $datatypes)
     }
 }
 
-// hàm 
+// hàm xoa du lieu 
+function delete($sql, $values, $datatypes)
+{
+    $conn = $GLOBALS['conn'];
+    if ($stmt = mysqli_prepare($conn, $sql)) {
+        mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
+        // chuc nang thuc thi 
+        if (mysqli_stmt_execute($stmt)) {
+            // tai len va luu tru du lieu 
+            $result = mysqli_stmt_affected_rows($stmt);
+            mysqli_stmt_close($stmt);
+            return $result;
+        } else {
+            mysqli_stmt_close($stmt);
+            // ko truy van dc se die
+            die("Khong cap nhat va truy van du lieu tu executed - DELETE !!!");
+        }
+    } else {
+        // ko truy van dc se die
+        die("Khong cap nhat va truy van du lieu tu preparad - DELETE !!!");
+    }
+}
 

@@ -1,7 +1,10 @@
 <?php
 // frontend purpose data // du lieu cho muc dinh giao dien người dùng 
 //http://localhost:3000/buivananh_duan1
-define('SITE_')
+//http://127.0.0.1:80/buivananh_duan1, where ":80" is the default port for HTTP traffic. 
+//http://127.0.0.1/dashboard/
+define('SITE_URL','http://127.0.0.1/buivananh_duan1/');
+define('ABOUT_IMG_PATH',SITE_URL.'/images/about');
 
 
 // su lí upload anh
@@ -69,6 +72,17 @@ function uploadImage($image,$folder){
             return 'upd_failed';
         }
     }
+}
+
+// ham xoa anh 
+function deleteImage($image , $folder){
+    if(unlink(UPLOAD_IMAGE_PATH.$folder.$image)){
+        return true;
+    }
+    else{
+        return false;
+    }
+
 }
 
 
