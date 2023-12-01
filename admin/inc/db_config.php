@@ -12,14 +12,24 @@ $conn = mysqli_connect($hostname, $svnname, $pass, $dbname);
 //     echo "ok";
 // }
 
-// hàm loc du lieu vao form 
+// hàm loc du lieu dc gui tu bieu mau form 
 function loc($data)
 {
     foreach ($data as $key => $value) {
-        $data[$key] = trim($value);
-        $data[$key] = stripslashes($value);
-        $data[$key] = htmlspecialchars($value);
-        $data[$key] = strip_tags($value);
+        // $data[$key] = trim($value);
+        // $data[$key] = stripslashes($value);
+        // $data[$key] = htmlspecialchars($value);
+        // $data[$key] = strip_tags($value);
+
+        $value = trim($value);
+        $value = stripslashes($value); //Loại bỏ ký tự backslashes ("") để tránh việc xử lý dữ liệu không đúng cách.
+        $value = htmlspecialchars($value); //Chuyển đổi các ký tự đặc biệt thành các thẻ HTML tương ứng để tránh tấn công XSS (Cross-Site Scripting).
+        $value = strip_tags($value); //Loại bỏ các thẻ HTML và PHP khỏi chuỗi.
+
+        //$data[$key] 
+        // lọc giá trị va ghi đè lẫn nhau nhiều lần và trả về gía trị value
+        $data[$key]  = $value;
+        // bao ve ung dung khoi cac cuoc tan cong va toan ven du lieu 
     }
     return $data;
 }
@@ -54,11 +64,11 @@ function select($sql, $values, $datatypes)
 }
 
 // ham truy van tat ca du lieu
-function selectALL($table){
+function selectALL($table)
+{
     $conn = $GLOBALS['conn'];
     $result = mysqli_query($conn, "SELECT * FROM $table ");
     return $result;
-
 }
 
 // ham cap nhat du lieu
@@ -129,4 +139,3 @@ function delete($sql, $values, $datatypes)
         die("Khong cap nhat va truy van du lieu tu preparad - DELETE !!!");
     }
 }
-

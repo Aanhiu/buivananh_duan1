@@ -1,4 +1,8 @@
+  <?php
+  require('admin/inc/db_config.php');
+  require('admin/inc/essential.php');
   
+  ?>
   <!-- menu-->
   <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm -stickky-top">
       <div class="container-fluid">

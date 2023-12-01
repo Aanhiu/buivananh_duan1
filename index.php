@@ -14,7 +14,6 @@
     <div class="container-fluid px-lg-4 mt-4 ">
         <div class="swiper swiper-container">
             <div class="swiper-wrapper">
-
                 <div class="swiper-slide">
                     <img src="pulic/images/carousel/1.png" class="w-100 d-block" />
                 </div>
@@ -88,7 +87,6 @@
         </div>
     </div>
     <!--end fom check phong -->
-
 
     <!-- phong trang chủ-->
     <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font"> Phòng Sang trọng của chúng tôi</h2>
@@ -267,27 +265,22 @@
                 <img src="./pulic/images/facilities/w.svg" width="80px">
                 <h5 class="mt-3">Wifi</h5>
             </div>
-
             <div class="col-lg-2 col-md-2 text-center bg-white rounded">
                 <img src="./pulic/images/facilities/d.svg" width="80px">
                 <h5 class="mt-3">Máy lạnh</h5>
             </div>
-
             <div class="col-lg-2 col-md-2 text-center bg-white rounded">
                 <img src="./pulic/images/facilities/m.svg" width="80px">
                 <h5 class="mt-3">Mát Xa</h5>
             </div>
-
             <div class="col-lg-2 col-md-2 text-center bg-white rounded">
                 <img src="./pulic/images/facilities/dien.svg" width="80px">
                 <h5 class="mt-3">Điện</h5>
             </div>
-
             <div class="col-lg-2 col-md-2 text-center bg-white rounded">
                 <img src="./pulic/images/facilities/r.svg" width="80px">
                 <h5 class="mt-3">Radio</h5>
             </div>
-
             <div class="col-lg-2 col-md-2 text-center bg-white rounded">
                 <img src="./pulic/images/facilities/t.svg" width="80px">
                 <h5 class="mt-3">Tivi</h5>
@@ -305,7 +298,6 @@
     <div class="container mt-5">
         <div class="swiper swiper-testimonials">
             <div class="swiper-wrapper">
-
                 <div class="swiper-slide bg-white p-4">
                     <div class="profile d-flex align-items-center p-4">
                         <img src="" alt="">
@@ -320,7 +312,6 @@
                         <i class="bi bi-star-fill text-warning"></i>
                     </div>
                 </div>
-
                 <div class="swiper-slide bg-white p-4">
                     <div class="profile d-flex align-items-center p-4">
                         <img src="" alt="">
@@ -335,7 +326,6 @@
                         <i class="bi bi-star-fill text-warning"></i>
                     </div>
                 </div>
-
                 <div class="swiper-slide bg-white p-4">
                     <div class="profile d-flex align-items-center p-4">
                         <img src="" alt="">
@@ -350,7 +340,6 @@
                         <i class="bi bi-star-fill text-warning"></i>
                     </div>
                 </div>
-
                 <div class="swiper-slide bg-white p-4">
                     <div class="profile d-flex align-items-center p-4">
                         <img src="" alt="">
@@ -365,7 +354,6 @@
                         <i class="bi bi-star-fill text-warning"></i>
                     </div>
                 </div>
-
                 <div class="swiper-pagination"></div>
             </div>
         </div>
@@ -373,7 +361,17 @@
 
         <?php require "./inc/footer.php" ?>
 
-</body>
+
+
+
+
+
+
+
+
+
+
+    </body>
 
 
 
