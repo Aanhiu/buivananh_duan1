@@ -55,9 +55,8 @@
                             <label class="form-label">Lời nhắn : </label>
                             <textarea name="message" required class="form-control shadow-none" rows="5" style="resize: none;"></textarea>
                         </div>
-                        <button name="gui" type="submit" class="btn btn-dark custum-gb shadow-none">Gửi</button>
+                        <button  type="submit" name="gui" class="btn btn-dark custum-gb shadow-none">Gửi</button>
                     </form>
-
                 </div>
             </div>
 
@@ -75,15 +74,19 @@
         // gắn giá tri của trường name , email , subject , message từ mảng lọc vào biến khởi tạo là $values sau đó thực hiện thêm giá trị vào csdl xampp
         $values = [$loc_data['name'],$loc_data['email'],$loc_data['subject'],$loc_data['message']];
 
+        //
+        $result = insert($q , $values,'ssss');
+        if($result == 1){
+            // gui thanh cong them vao csdl in thông báo cho người dùng , thành công
+            alert('success',' Đã Gủi Đi Hãy Chờ Phản Hồi ở Email của bạn !!!');
+        }else{
+            // xuat loi neu ko gui dc
+            alert('error','Không Gửi đi được Sever đang lỗi !!!');
+        }
         
-
-
-
     }
     
     ?>
-
-
 
     <?php require "./inc/footer.php" ?>
 

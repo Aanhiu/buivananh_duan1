@@ -81,8 +81,6 @@ if ((isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] == true)) {
     }
     ?>
 
-
-
     <?php require "/buivananh_duan1/admin/inc/scripts.php" ?>
 </body>
 

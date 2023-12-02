@@ -14,31 +14,7 @@
     font-weight: 500;
 }
 
-h1 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500; /* You can adjust the weight as needed */
-}
-h2 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500; /* You can adjust the weight as needed */
-}
 
-h3 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500; /* You can adjust the weight as needed */
-}
-h4 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500; /* You can adjust the weight as needed */
-}
-h5 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500; /* You can adjust the weight as needed */
-}
-h6 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500; /* You can adjust the weight as needed */
-}
 
 
 input::-webkit-outer-spin-button,
@@ -84,11 +60,8 @@ input[type=number] {
     height: 1.7px;
 }
 
-.custom-alert{
-    position: fixed;
-    top: 25px;
-    right: 25px;
-}
+
+
 
 #dashboard-menu{
     background-color: black;

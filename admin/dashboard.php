@@ -29,7 +29,7 @@ session_regenerate_id(true);
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden" >
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum provident necessitatibus enim ducimus ratione asperiores sunt rerum, aliquid iure magnam neque eos voluptate sapiente eveniet voluptatibus perspiciatis. Natus, minima error adipisci iure numquam officia qui delectus. Vero excepturi nulla labore illum qui magni recusandae officiis assumenda, laudantium quod quos dolor. Error adipisci facilis quasi blanditiis sunt velit mollitia earum eius ad neque molestiae aut natus perspiciatis quas totam asperiores molestias, dolores sapiente commodi, deserunt dicta? At est enim, sunt nemo ipsam vel deleniti consequuntur officiis repellendus similique id distinctio, odio autem. Mollitia tenetur voluptatibus ullam. Molestias cumque voluptatum doloribus ut aspernatur nisi quod nobis ratione. Tempore obcaecati, ipsam aperiam 
+               <h1>Trang Tổng Quan</h1>
     </div>
 
 

@@ -7,6 +7,26 @@
     <title>Liên Hệ</title>
     <?php require "./inc/link.php" ?>
 </head>
+<style>
+    .room img {
+        width: 100%;
+        height: auto;
+    }
+
+    .room h2 {
+        color: #333;
+        font-size: 1.5em;
+    }
+
+    .room p {
+        color: #666;
+        font-size: 1em;
+    }
+
+    .room {
+        margin-bottom: 20px;
+    }
+</style>
 
 <body class="gb-light">
     <?php require "./inc/header.php" ?>
@@ -84,136 +104,83 @@
                 </nav>
 
             </div>
-
+            <!-- bat dau form xuat phong-->
             <div class="col-lg-9 col-md-12 px-4">
-                <!-- xuat phong 1-->
 
-                <div class="card mb-4 border-0 shadow">
-                    <div class="row g-0 align-items-center">
 
-                        <div class="col-md-5 ">
-                            <img src="./pulic/images/rooms/IMG_42663.png" class="img-fluid roundeds">
-                        </div>
 
-                        <div class="col-md-5 ">
-                            <h5 class="mb-3">Xuất tên phòng</h5>
-                            <div class="features mb-4">
-                                <h6 class="mb-1">Đặc Trưng</h6>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">2 Giường</span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">1 cửa xổ </span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">1 Ban công</span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">3 Ghế</span>
-                            </div>
+                <div class="container mt-4">
+                    <div class="row">
+                        <?php
 
-                            <div class="features2 mb-4">
-                                <h6 class="mb-1">Dịch Vụ</h6>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">Wifi</span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">Khăn Tắm </span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">Đồ cá nhân</span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">Đồ uống free</span>
-                            </div>
+                        require_once "/buivananh_duan1/admin/inc/db_config.php";
+                        // truy vấn csdl
+                        $phongQuery = "SELECT * FROM `phong`";
+                        $phongResult = mysqli_query($conn, $phongQuery);
 
-                            <div class="songuoi mb-4">
-                                <h6 class="mb-1">Số người</h6>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">4 người lớn</span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">2 trẻ em </span>
-                            </div>
-                            <h6 class="mb-4 text-center">500.000vnd /đêm</h6>
-                            <a href="#" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2">Đặt Ngay</a>
-                            <a href="#" class="btn btn-sm w-100 btn-outline-dark shadow-none mb-2">Xem chi tiết</a>
+                        // xuat phong voi mysqli_fetch_assoc 
+                        while ($row = mysqli_fetch_assoc($phongResult)) {
+                            echo '<div class="card mb-4 border-0 shadow">';
+                            echo '<div class="row g-0 align-items-center">';
 
-                        </div>
+                            echo '<div class="col-md-5 ">';
+                            echo '<img class="img-fluid roundeds"  src="' . $row['image'] . '">';
+                            echo '</div>';
 
+                            echo '<div class="col-md-5 ">';
+                            echo '<h5 class="mb-3">' . $row['name'] . '</h5>';
+                            echo '<h6 class="mb-3">' . $row['loaiphong_id'] . '</h6>';
+
+                            echo '<div class="features mb-4">';
+                            echo '<h6 class="mb-1">ALL Nội Thất</h6>';
+                            echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap">2 Giường</span>';
+                            echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap">1 cửa xổ </span>';
+                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">1 Ban công</span>';
+                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">3 Ghế</span>';
+                            echo '</div>';
+
+                            echo '<div class="features2 mb-4">';
+                            echo ' <h6 class="mb-1">ALL Dịch Vụ</h6>';
+                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">' . $row['dichvu'] . '</span>';
+
+                            echo '</div>';
+
+                            echo '<div class="songuoi mb-4">';
+                            echo '<h6 class="mb-1">ALL Số người</h6>';
+                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">4 người lớn</span>';
+                            echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap">2 trẻ em</span>';
+                            echo ' </div>';
+                            echo '<div class="songuoi mb-4">';
+                            echo '<h6 class="mb-1">Mô tả:</h6>';
+                            echo '<p>x' . $row['mota'] . '</p>';
+
+                            echo '</div>';
+                            echo '<div class="row">';
+                            echo '<div class="col-md-6 text-center">';
+                            echo '<h5 class="mb-4">' . $row['gia'] . 'VND/Đêm</h5>';
+                            echo '</div>';
+                            echo '<div class="col-md-6 text-center">';
+                            echo '<h6 class="mb-4">' . $row['trangthai'] . '</h6>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '<a href="#" name="booking" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2">Đặt Ngay</a>';
+                            echo '<a href="#" name="chitiet" class="btn btn-sm w-100 btn-outline-dark shadow-none mb-2">Xem chi tiết</a>';
+
+                            echo '</div>';
+                            echo '</div>';
+                            echo '</div>';
+                        }
+
+
+
+                        ?>
                     </div>
-
                 </div>
-                <!-- xuat phong 2-->
-                <div class="card mb-4 border-0 shadow">
-                    <div class="row g-0 align-items-center">
 
-                        <div class="col-md-5 ">
-                            <img src="./pulic/images/rooms/IMG_42663.png" class="img-fluid roundeds">
-                        </div>
 
-                        <div class="col-md-5 ">
-                            <h5 class="mb-3">Xuất tên phòng</h5>
-                            <div class="features mb-4">
-                                <h6 class="mb-1">Đặc Trưng</h6>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">2 Giường</span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">1 cửa xổ </span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">1 Ban công</span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">3 Ghế</span>
-                            </div>
 
-                            <div class="features2 mb-4">
-                                <h6 class="mb-1">Dịch Vụ</h6>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">Wifi</span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">Khăn Tắm </span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">Đồ cá nhân</span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">Đồ uống free</span>
-                            </div>
-
-                            <div class="songuoi mb-4">
-                                <h6 class="mb-1">Số người</h6>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">4 người lớn</span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">2 trẻ em </span>
-                            </div>
-                            <h6 class="mb-4 text-center">500.000vnd /đêm</h6>
-                            <a href="#" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2">Đặt Ngay</a>
-                            <a href="#" class="btn btn-sm w-100 btn-outline-dark shadow-none mb-2">Xem chi tiết</a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-                <!-- xuat phong 3-->
-                <div class="card mb-4 border-0 shadow">
-                    <div class="row g-0 align-items-center">
-
-                        <div class="col-md-5 ">
-                            <img src="./pulic/images/rooms/IMG_42663.png" class="img-fluid roundeds">
-                        </div>
-
-                        <div class="col-md-5 ">
-                            <h5 class="mb-3">Xuất tên phòng</h5>
-                            <div class="features mb-4">
-                                <h6 class="mb-1">Đặc Trưng</h6>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">2 Giường</span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">1 cửa xổ </span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">1 Ban công</span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">3 Ghế</span>
-                            </div>
-
-                            <div class="features2 mb-4">
-                                <h6 class="mb-1">Dịch Vụ</h6>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">Wifi</span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">Khăn Tắm </span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">Đồ cá nhân</span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">Đồ uống free</span>
-                            </div>
-
-                            <div class="songuoi mb-4">
-                                <h6 class="mb-1">Số người</h6>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">4 người lớn</span>
-                                <span class="badge rounded-pill bg-light text-dark texr-wrap">2 trẻ em </span>
-                            </div>
-                            <h6 class="mb-4 text-center">500.000vnd /đêm</h6>
-                            <a href="#" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2">Đặt Ngay</a>
-                            <a href="#" class="btn btn-sm w-100 btn-outline-dark shadow-none mb-2">Xem chi tiết</a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-                <!-- xuat phong 4 end 3 phong-->
             </div>
-
-          
-            
-            
-
+            <!-- end form xuat phong-->
 
 
         </div>

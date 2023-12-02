@@ -23,35 +23,23 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="phong.php">Quản lí phòng </a>
+                            <a class="nav-link text-white" href="loaiphong.php">Loại Phòng </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="phong.php ">Quản lí phòng </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="taikhoan.php">Quản lí tài khoản </a>
+                            <a class="nav-link text-white" href="">Quản lí tài khoản </a>
                         </li>
-
-                        <!-- <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Quản lí Bình Luận</a>
-                        </li> -->
-
-                        <!-- <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Quản Hóa Đơn</a>
-                        </li> -->
 
                         <li class="nav-item">
                             <a class="nav-link text-white" href="caidat.php">Cài Đặt </a>
                         </li>
-
-                        <!-- <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Về trang chủ</a>
-                        </li> -->
-                        
-                       
+                      
                     </ul>
 
-
                 </div>
-
         </nav>
-
     </div>

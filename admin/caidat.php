@@ -1,15 +1,12 @@
 <?php
-
 require "/buivananh_duan1/admin/inc/essential.php";
 adminLogin();
 // tao 1 id moi thay the id cu de bao mat 
 // dang nhap thanh cong va thay doi id phien , thay doi id cu thanh moi
 session_regenerate_id(true);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +21,7 @@ session_regenerate_id(true);
     <?php
     require "/buivananh_duan1/admin/inc/header.php";
     ?>
-  
+
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
@@ -42,17 +39,12 @@ session_regenerate_id(true);
                         </div>
                         <h5 class="card-title"></h5>
                         <h6 class="card-subtitle mb-1 fw-bold">Tiêu đề trang</h6>
-
                         <p class="card-text" id="site_title"> </p>
-
                         <h6 class="card-subtitle mb-1 fw-bold">Về chúng tôi</h6>
-
                         <p class="card-text" id="site_about" > </p>
-
                     </div>
                 </div>
                 <!-- end cài đặt -->
-
 
                 <!--bat dau  Modal chinh sua -->
                 <div class="modal fade" id="caidatchung" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -91,17 +83,8 @@ session_regenerate_id(true);
                     </div>
                 </div>
                 <!-- end chinh sua-->
-
-
-
             </div>
         </div>
-
-
-
-
-
-
 
         <?php
         require "/buivananh_duan1/admin/inc/scripts.php";
@@ -109,12 +92,8 @@ session_regenerate_id(true);
         ?>
 </body>
 
-
-
-
 <script>
     let general_data;
-
     function get_general() {
         // truy van tim gach chan duoi tieu de 
         let site_title = document.getElementById('site_title');
@@ -131,7 +110,6 @@ session_regenerate_id(true);
         //
         xhr.send('get_general');
     }
-
     window.onload = function(){
         get_general();
     }

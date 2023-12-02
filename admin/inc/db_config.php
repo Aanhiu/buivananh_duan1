@@ -5,34 +5,62 @@ $pass = "";
 $dbname = "buivananh_duan1";
 // kết nối 
 $conn = mysqli_connect($hostname, $svnname, $pass, $dbname);
-// kem tra ket noi
-// if(!$conn){
-//     echo "lõi";
-// }else{
-//     echo "ok";
-// }
+
+
 
 // hàm loc du lieu dc gui tu bieu mau form 
-function loc($data)
-{
-    foreach ($data as $key => $value) {
-        // $data[$key] = trim($value);
-        // $data[$key] = stripslashes($value);
-        // $data[$key] = htmlspecialchars($value);
-        // $data[$key] = strip_tags($value);
+// loại bỏ những lí tự khoảng trắng vs bảo vệ dự liệu loại bỏ thẻ html và php ở chuổi , tránh xử
+// lí dữ liệu ko đúng cách 
 
-        $value = trim($value);
-        $value = stripslashes($value); //Loại bỏ ký tự backslashes ("") để tránh việc xử lý dữ liệu không đúng cách.
-        $value = htmlspecialchars($value); //Chuyển đổi các ký tự đặc biệt thành các thẻ HTML tương ứng để tránh tấn công XSS (Cross-Site Scripting).
-        $value = strip_tags($value); //Loại bỏ các thẻ HTML và PHP khỏi chuỗi.
+//xoa boi den doi thanh loc 
+// function loc($data)
+// {
+//     // fix loi khi chuyền 1 chuõio thành 1 mảng 
+//     // ham dc viết đẻ xử lí các gía trị cuả 1 mảng
+//     if(!is_array($data)){
+//         //su li gan gía tri giá cho biến data($data) thành 1 mangg
+//         $data = array($data); 
 
-        //$data[$key] 
-        // lọc giá trị va ghi đè lẫn nhau nhiều lần và trả về gía trị value
-        $data[$key]  = $value;
-        // bao ve ung dung khoi cac cuoc tan cong va toan ven du lieu 
-    }
+//     }
+
+//     foreach ($data as $key => $value) {
+//         // $data[$key] = trim($value);
+//         // $data[$key] = stripslashes($value);
+//         // $data[$key] = htmlspecialchars($value);
+//         // $data[$key] = strip_tags($value);
+
+//         $value = trim($value);
+//         $value = stripslashes($value); //Loại bỏ ký tự backslashes ("") để tránh việc xử lý dữ liệu không đúng cách.
+//         $value = htmlspecialchars($value); //Chuyển đổi các ký tự đặc biệt thành các thẻ HTML tương ứng để tránh tấn công XSS (Cross-Site Scripting).
+//         $value = strip_tags($value); //Loại bỏ các thẻ HTML và PHP khỏi chuỗi.
+
+//         //$data[$key] 
+//         // lọc giá trị va ghi đè lẫn nhau nhiều lần và trả về gía trị value
+//         $data[$key]  = $value;
+//         // bao ve ung dung khoi cac cuoc tan cong va toan ven du lieu 
+//     }
+//     return $data;
+// }
+// 
+
+// bôi đen đi
+function loc($data) {
+    // Loại bỏ các khoảng trắng thừa ở đầu và cuối chuỗi
+    $data = trim($data);
+
+    // Loại bỏ các dấu backslashes (\)
+    $data = stripslashes($data);
+
+    // Chuyển đổi các ký tự đặc biệt thành thực thể HTML
+    // Điều này ngăn chặn tấn công XSS
+    $data = htmlspecialchars($data);
+
+    // Loại bỏ các thẻ HTML và PHP khỏi chuỗi
+    $data = strip_tags($data);
+
     return $data;
 }
+
 
 // ham truy van du 
 function select($sql, $values, $datatypes)
@@ -118,7 +146,7 @@ function insert($sql, $values, $datatypes)
 }
 
 // hàm xoa du lieu 
-function delete($sql, $values, $datatypes)
+function xoa($sql, $values, $datatypes)
 {
     $conn = $GLOBALS['conn'];
     if ($stmt = mysqli_prepare($conn, $sql)) {
