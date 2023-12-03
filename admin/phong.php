@@ -13,7 +13,9 @@ $loaiPhongResult = mysqli_query($conn, $loaiPhongQuery);
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['them'])) {
     $tenPhong = loc($_POST['name']);
     $loaiPhong = (int) loc($_POST['loaiphong_id']); // Chuyển sang kiểu số nguyên
-    $gia = (float) loc($_POST['gia']); // Chuyển sang kiểu số thực
+    //$gia = loc($_POST['gia']); // Chuyển gía sang kiểu số 100.000 
+    // Chuyển gía sang kiểu số 100.000 
+    $gia = floatval(loc($_POST['gia']));
     $dichVu = loc($_POST['dichvu']);
     $moTa = loc($_POST['mota']);
     $trangThai = loc($_POST['trangthai']);
@@ -28,6 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['them'])) {
 
         if (move_uploaded_file($fileTmpPath, $destPath)) {
             $imagePath = $destPath;
+            // fix lỗi ảnh đường dẫn tuyệt đối thành tuờng đối
+            $imagePath = ' /upload/' .$fileName; 
 
             //$sql = "INSERT INTO `phong` (`name`, `loaiphong_id`, `image`, `gia`, `dichvu`, `mota`, `trangthai`) VALUES (?, ?, ?, ?, ?, ?, ?)";
             $sql = "INSERT INTO `phong` (`name`, `loaiphong_id`, `image`, `gia`, `dichvu`, `mota`, `trangthai`) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -59,10 +63,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['them'])) {
 }
 
 // xuat phong 
-$phongQuery = "SELECT * FROM `phong`";
+//$phongQuery = "SELECT * FROM `phong`";
+$phongQuery = "SELECT  phong.*, loai_phong.name AS ten_loai_phong FROM phong INNER JOIN loai_phong ON phong.loaiphong_id = loai_phong.id";
 $phongResult = mysqli_query($conn, $phongQuery);
 
-///
 // chuc nang xoa 
 if (isset($_GET['delete'])) {
     // xoa theo id
@@ -78,7 +82,7 @@ if (isset($_GET['delete'])) {
         echo "<script>alert('Lỗi khi xóa phòng'); window.location='phong.php';</script>";
     }
 }
-
+// chuc nang sửa làm sau
 ?>
 
 <!DOCTYPE html>
@@ -119,20 +123,25 @@ if (isset($_GET['delete'])) {
                                     <th scope="col">Dich vụ</th>
                                     <th scope="col">Mô tả</th>
                                     <th scope="col">Trạng Thái</th>
-                                    <th scope="col">Hành Động</th>
+                                    <th scope="col" style="text-align: center;">Hành Động</th>
                                 </tr>
                                 <?php while ($row = mysqli_fetch_assoc($phongResult)) : ?>
                                     <tr>
                                         <td><?php echo $row['id']; ?></td>
                                         <td><?php echo $row['name']; ?></td>
-                                        <td><?php echo $row['loaiphong_id']; // Bạn có thể muốn join bảng để lấy tên loại phòng 
+                                        <td><?php echo $row['ten_loai_phong']; // đã join để lấy tên loại phòng thay đổi thành ten_loai_phong
                                             ?></td>
                                         <td><img src="<?php echo $row['image']; ?>" alt="Ảnh phòng đang bị lỗi sử lí sau" style="width: 100px; height: auto;"></td>
-                                        <td><?php echo $row['gia']; ?></td>
+                                        <td><?php echo number_format($row['gia'], 0, '.', ',');
+?></td>
+                                        
                                         <td><?php echo $row['dichvu']; ?></td>
                                         <td><?php echo $row['mota']; ?></td>
                                         <td><?php echo $row['trangthai']; ?></td>
                                         <!-- Các hành động như chỉnh sửa/xóa -->
+                                        <td><a href="?edit=<?php // lam sau; 
+                                                            ?> ">Sửa</a></td>
+
                                         <td><a href="?delete=<?php echo $row['id']; ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</a></td>
 
 

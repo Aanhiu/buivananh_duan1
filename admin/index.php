@@ -9,7 +9,7 @@ require "/buivananh_duan1/admin/inc/essential.php";
 // test http://localhost:3000/admin/dashboard.php admin =>> thay the dashboard.php http://localhost:3000/admin/index.php da xac nhan da tung dang nhap admin 1 lan roi se chuyen de http://localhost:3000/admin/dashboard.php
 
 session_start();
-//
+// kiem tra xem là admin đã login lần nào chưa trên nếu là admin đưa đến trang chủ admin
 if ((isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] == true)) {
     //
     pageadmin('dashboard.php');
@@ -48,7 +48,6 @@ if ((isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] == true)) {
             <button name="Login" type="submit" class="btn custom-bg shadow-none">Đăng nhập</button>
         </form>
     </div>
-
 
     <?php
     if (isset($_POST['Login'])) {

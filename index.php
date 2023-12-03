@@ -91,23 +91,27 @@
     <!-- phong trang chủ-->
     <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font"> Phòng Sang trọng của chúng tôi</h2>
 
+  
     <div class="container">
         <div class="row">
 
             <?php
             // truy van xuât phong 9 bản trong csdl ra home
             require_once "/buivananh_duan1/admin/inc/db_config.php";
-            $phongQuery = "SELECT * FROM phong LIMIT 9";
+            //$phongQuery = "SELECT * FROM phong LIMIT 9";
+
+            $phongQuery = "SELECT  phong.*, loai_phong.name AS ten_loai_phong FROM phong INNER JOIN loai_phong ON phong.loaiphong_id = loai_phong.id LIMIT 9";
+
             $phongResult = mysqli_query($conn, $phongQuery);
             // xuat ra voi phong lap
             while ($row = mysqli_fetch_assoc($phongResult)) {
                 echo '<div class="col-lg-4 col-md-6 my-3">';
                 echo '<div class="card border-0 shadow" style="max-width: 350px; margin: auto;">';
-                echo '<img src="'.$row['image'].'" alt="Ảnh đang lỗi fix sau" class="card-img-top">';
+                echo '<img src="'.$row['image'].'" style=" width: 350px; height: 300px;" alt="Ảnh đang lỗi fix sau" class="card-img-top">';
                 echo ' <div class="card-body">';
-                echo ' <h5>'.$row['name'].' </h5>';
-                echo ' <h6>'.$row['loaiphong_id'].'</h6>';
-                echo ' <h6 class="mb-4">'.$row['gia'].' VNĐ / Đêm </h6>';
+                echo ' <h5> Tên Phòng :'.$row['name'].' </h5>';
+                echo ' <h6>Tên loại phòng :'.$row['ten_loai_phong'].'</h6>';
+                echo ' <h6 class="mb-4">Giá phòng :'.number_format($row['gia'], 0, '.', ',').' VNĐ / Đêm </h6>';
                 echo '<div class="features mb-4">';
                 echo '<h6 class="mb-1">Nội Thất :</h6>';
                 echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap"> Giường</span>';
@@ -171,8 +175,8 @@
                 <h5 class="mt-3">Máy lạnh</h5>
             </div>
             <div class="col-lg-2 col-md-2 text-center bg-white rounded">
-                <img src="./pulic/images/facilities/m.svg" width="80px">
-                <h5 class="mt-3">Mát Xa</h5>
+                <img src="./pulic/images/facilities/giat.jpg" width="80px">
+                <h5 class="mt-3">Giặt ủi</h5>
             </div>
             <div class="col-lg-2 col-md-2 text-center bg-white rounded">
                 <img src="./pulic/images/facilities/dien.svg" width="80px">
@@ -189,7 +193,7 @@
         </div>
     </div>
     <div class="col-lg-12 text-center mt-5">
-        <a href="#" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow">Xem Thêm Các dịch vụ</a>
+        <a href="/trang_coso.php" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow">Xem Thêm Các dịch vụ</a>
     </div>
     </div>
     <!-- end các dịch vu them cua khach san-->
@@ -255,9 +259,14 @@
                         <i class="bi bi-star-fill text-warning"></i>
                     </div>
                 </div>
+                
                 <div class="swiper-pagination"></div>
             </div>
         </div>
+        <div class="col-lg-12 text-center mt-5">
+        <a href="#" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow">Xem Thêm Các đánh giá</a>
+    </div>
+    </div>
         <!-- end các bài viết blog về khách san-->
 
         <?php require "./inc/footer.php" ?>

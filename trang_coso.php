@@ -69,9 +69,9 @@
         <div class="col-lg-4 col-md-6 mb-5 px-4">
                 <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
                     <div class="d-flew align-items-center mb-2">
-                    <img src="./pulic/images/facilities/m.svg" width="40px">
-                    <h5 class="m-0 ms-3">Mát sa</h5>
-                    <p>Dịch vụ mát xa cung cấp phương pháp thư giãn tuyệt vời, giúp giảm căng thẳng và mệt mỏi. Qua các kỹ thuật chuyên nghiệp, mát xa không chỉ giúp cải thiện lưu thông máu mà còn tăng cường sức khỏe và tinh thần</p>
+                    <img src="./pulic/images/facilities/giat.jpg" width="40px">
+                    <h5 class="m-0 ms-3">Gặt ủi</h5>
+                    <p> Dịch vụ giặt ủi, giặt sấy, giặt hấp cho quần áo trang phục đồ vải đáp ứng mọi nhu cầu của bạn và gia đình. Dịch vụ giặt ủi giúp bạn tiết kiệm thời gian nhiều hơn, chỉnh chu hơn với những bộ trang phục được giặt sạch sẽ, ủi phẳng phiu và thơm dịu trong thời gian nhanh nhất.</p>
                 </div>
             </div>
         </div>
