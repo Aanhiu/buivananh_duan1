@@ -19,30 +19,30 @@
 }
 
 h1 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500; /* You can adjust the weight as needed */
+    font-family: 'Merienda', cursive;
+    font-weight: 400;
 }
 h2 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500; /* You can adjust the weight as needed */
+    font-family: 'Merienda', cursive;
+    font-weight: 400;
 }
-
 h3 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500; /* You can adjust the weight as needed */
+    font-family: 'Merienda', cursive;
+    font-weight: 400;
 }
 h4 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500; /* You can adjust the weight as needed */
+    font-family: 'Merienda', cursive;
+    font-weight: 400;
 }
-h5 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500; /* You can adjust the weight as needed */
-}s
+h4 {
+    font-family: 'Merienda', cursive;
+    font-weight: 400;
+}
 h6 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500; /* You can adjust the weight as needed */
+    font-family: 'Merienda', cursive;
+    font-weight: 400;
 }
+
 
 
 input::-webkit-outer-spin-button,

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liên Hệ</title>
+    <title>Phòng của khách sạn </title>
     <?php require "./inc/link.php" ?>
 </head>
 <style>
@@ -65,42 +65,17 @@
 
 
                             <div class="border bg-light p-3 rounded mb-3">
-                                <h5 class="mb-3" style="font-size: 18px;">Cơ sở Dịch Vụ</h5>
-
-                                <div class="mb2">
-                                    <input type="checkbox" id="f1" class="form-check-input shadow-none me-1">
-                                    <label class="form-check-label" for="f1">Tiện ích 1 </label>
-                                </div>
-
-                                <div class="mb2">
-                                    <input type="checkbox" id="f2" class="form-check-input shadow-none me-1">
-                                    <label class="form-check-label" for="f2">Tiện ích 2 </label>
-                                </div>
-
-                                <div class="mb2">
-                                    <input type="checkbox" id="f3" class="form-check-input shadow-none me-1">
-                                    <label class="form-check-label" for="f3">Tiện ích 3 </label>
-                                </div>
-                            </div>
-
-                            <div class="border bg-light p-3 rounded mb-3">
                                 <h5 class="mb-3" style="font-size: 18px;">Người ở : </h5>
                                 <div class="d-flex">
                                     <div class="mb-3">
-                                        <label class="form-label">Người lớn</label>
-                                        <input type="number" class="form-control shadow-none">
+                                        <label class="form-label">Người lớn 2</label>
                                     </div>
-
-                                    <div class="mb-3">
-                                        <label class="form-label">Trẻ em</label>
-                                        <input type="number" class="form-control shadow-none">
+                                    <div>
+                                        <label class="form-label">Trẻ em 2</label>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
-
                 </nav>
 
             </div>
@@ -152,12 +127,19 @@
                             echo '<h6 class="mb-1">Số người có thể chứa :</h6>';
                             echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">2 người lớn</span>';
                             echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap">2 trẻ em</span>';
-                            echo ' </div>';
-                            echo '<div class="songuoi mb-4">';
-                            echo '<h6 class="mb-1">Mô tả :</h6>';
-                            echo '<p>' . $row['mota'] . '</p>';
 
+
+                            echo ' <div class="features2 mb-4">';
+                            echo ' <h6 class="mb-1">Đánh giá</h6>';
+                            echo ' <span class="badge rounded-pill bg-light ">';
+                            echo '  <i class="bi bi-star-fill text-warning"></i>';
+                            echo '  <i class="bi bi-star-fill text-warning"></i>';
+                            echo ' <i class="bi bi-star-fill text-warning"></i>';
+                            echo '  <i class="bi bi-star-fill text-warning"></i>';
+                            echo ' <i class="bi bi-star-fill text-warning"></i>';
+                            echo ' </span>';
                             echo '</div>';
+
                             echo '<div class="row">';
                             echo '<div class="col-md-6 text-center">';
                             echo '<h5 class="mb-4">' . $row['gia'] . 'VND/Đêm</h5>';
