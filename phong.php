@@ -114,8 +114,8 @@
                         <?php
 
                         require_once "/buivananh_duan1/admin/inc/db_config.php";
-                        // truy vấn csdl
-                        $phongQuery = "SELECT * FROM `phong`";
+                        // truy vấn csdl // thuc hien INNER JOIN hien ten phong chứ ko phải hiện id
+                        $phongQuery = "SELECT  phong.*, loai_phong.name AS ten_loai_phong FROM phong INNER JOIN loai_phong ON phong.loaiphong_id = loai_phong.id";
                         $phongResult = mysqli_query($conn, $phongQuery);
 
                         // xuat phong voi mysqli_fetch_assoc 
@@ -128,31 +128,34 @@
                             echo '</div>';
 
                             echo '<div class="col-md-5 ">';
-                            echo '<h5 class="mb-3">' . $row['name'] . '</h5>';
-                            echo '<h6 class="mb-3">' . $row['loaiphong_id'] . '</h6>';
+                            echo '<h5 class="mb-3">Tên Phòng :' . $row['name'] . '</h5>';
+                            echo '<h6 class="mb-3"> Lọai Phòng : ' . $row['ten_loai_phong'] . '</h6>';
 
                             echo '<div class="features mb-4">';
-                            echo '<h6 class="mb-1">ALL Nội Thất</h6>';
-                            echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap">2 Giường</span>';
-                            echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap">1 cửa xổ </span>';
-                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">1 Ban công</span>';
-                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">3 Ghế</span>';
+                            echo '<h6 class="mb-1">Nội Thất :</h6>';
+                            echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap"> Giường</span>';
+                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">Điện Thoại Bàn</span>';
+                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">Điều Hòa</span>';
+                            echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap">cửa xổ </span>';
+                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">1 Phòng Tắm</span>';
+                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">1 Vệ Sinh</span>';
+                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">Ghế</span>';
                             echo '</div>';
 
                             echo '<div class="features2 mb-4">';
-                            echo ' <h6 class="mb-1">ALL Dịch Vụ</h6>';
+                            echo ' <h6 class="mb-1">Dịch Vụ :</h6>';
                             echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">' . $row['dichvu'] . '</span>';
 
                             echo '</div>';
 
                             echo '<div class="songuoi mb-4">';
-                            echo '<h6 class="mb-1">ALL Số người</h6>';
-                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">4 người lớn</span>';
+                            echo '<h6 class="mb-1">Số người có thể chứa :</h6>';
+                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">2 người lớn</span>';
                             echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap">2 trẻ em</span>';
                             echo ' </div>';
                             echo '<div class="songuoi mb-4">';
-                            echo '<h6 class="mb-1">Mô tả:</h6>';
-                            echo '<p>x' . $row['mota'] . '</p>';
+                            echo '<h6 class="mb-1">Mô tả :</h6>';
+                            echo '<p>' . $row['mota'] . '</p>';
 
                             echo '</div>';
                             echo '<div class="row">';

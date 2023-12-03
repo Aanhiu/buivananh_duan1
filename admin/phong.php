@@ -18,6 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['them'])) {
     $moTa = loc($_POST['mota']);
     $trangThai = loc($_POST['trangthai']);
 
+
+    // kiem tra xem nguoi dung da đã up file ảnh vào trường ô ảnh hay chưa và ảnh lỗi phải bằng 0 tiến hành sử lí ảnh]\kmn  
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         $folderUpload = 'C:/buivananh_duan1/upload/';
         $fileTmpPath = $_FILES['image']['tmp_name'];
@@ -48,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['them'])) {
             mysqli_stmt_close($stmt);
         } else {
             //echo "<script>alert('Thêm thành công'); window.location='phong.php';</script>";
-            echo "Phòng đã được thêm thành công.";
+            //echo "Phòng đã được thêm thành công.";
         }
     } else {
         //cho "Lỗi: Không có file được tải lên hoặc có lỗi xảy ra trong quá trình tải lên.";

@@ -106,69 +106,188 @@ require "./inc/link.php"; ?>
 </div>
 
 <?php
-// test
-echo "Test gd";
 
-echo '<div class="card mb-4 border-0 shadow">';
-echo '<div class="row g-0">';
-
-echo '<div class="col-md-5">';
-echo '<img class="img-fluid rounded" src="">';
-echo '</div>';
-
-echo '<div class="col-md-7">';
-
-echo '<h5 class="mb-2"></h5>'; // Tên phòng
-echo '<h6 class="text-muted mb-4"></h6>'; // Loại phòng hoặc ID
-
-echo '<div class="mb-3">'; // Bắt đầu nội dung chính
-echo '<h6 class="mb-1">Đặc Trưng</h6>';
-// Tiếp tục với các đặc trưng như giường, cửa sổ, etc.
-echo '</div>';
-
-echo '<div class="mb-3">'; // Bắt đầu dịch vụ
-echo '<h6 class="mb-1">Dịch Vụ</h6>';
-// Tiếp tục với các dịch vụ như Wifi, khăn tắm, etc.
-echo '</div>';
-
-echo '<div class="mb-4">'; // Bắt đầu số người và mô tả
-echo '<h6 class="mb-1">Số người</h6>';
-// Tiếp tục với thông tin về số người lớn và trẻ em
-echo '</div>';
-
-echo '<div class="mb-4">'; // Mô tả
-echo '<h6 class="mb-1">Mô tả:</h6>';
-echo '<p></p>';
-echo '</div>';
-
-echo '<div class="row mb-4">'; // Bắt đầu hàng mới cho giá và trạng thái
-echo '<div class="col-6">';
-echo '<h5>VND/Đêm</h5>';
-echo '</div>';
-echo '<div class="col-6">';
-echo '<h6 class="text-secondary"></h6>';
-echo '</div>';
-echo '</div>'; // Kết thúc hàng cho giá và trạng thái
-
-echo '<div class="d-grid gap-2">'; // Bắt đầu các nút
-echo '<a href="#" class="btn btn-primary mb-2">Đặt Ngay</a>'; // Nút đặt phòng
-echo '<a href="#" class="btn btn-outline-secondary">Xem chi tiết</a>'; // Nút xem chi tiết
-echo '</div>'; // Kết thúc các nút
-
-echo '</div>'; // Kết thúc cột chính
-
-echo '</div>'; // Kết thúc hàng chính
-echo '</div>'; // Kết thúc card
 
 //https://pixabay.com/vi/images/search/hotel/
 
 
 
 
-
-
-
-
 ?>
 
+<div class="col-lg-4 col-md-6 my-3">
+    <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
+        <img src="xuat anh" class="card-img-top">
 
+        <!-- phong -->
+        <div class="card-body">
+            <h5>Xuất tên phòng </h5>
+            <h6>Xuất loại phong</h6>
+            <h6 class="mb-4">Xuất giá phòng / đêm </h6>
+            echo '<div class="features mb-4">';
+                echo '<h6 class="mb-1">Nội Thất :</h6>';
+                echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap"> Giường</span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">Điện Thoại Bàn</span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">Điều Hòa</span>';
+                echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap">cửa xổ </span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">1 Phòng Tắm</span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">1 Vệ Sinh</span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">Ghế</span>';
+                echo '</div>';
+
+            <div class="features mb-4">
+                <h6 class="mb-1">All Dịch vụ</h6>
+                <span class="badge rounded-pill bg-light text-dark texr-wrap">xuat dich vu</span>
+
+            </div>
+
+            <div class="songuoi mb-4">
+                <h6 class="mb-1">Só người có thể chứa</h6>
+                <span class="badge rounded-pill bg-light text-dark texr-wrap">4 người lớn</span>
+                <span class="badge rounded-pill bg-light text-dark texr-wrap">2 trẻ em </span>
+            </div>
+
+            <div class="songuoi mb-4">
+                <h6 class="mb-1">Mô tả</h6>
+                <p>Xuất mo tả</p>
+            </div>
+
+
+            <div class="rating mb-4">
+                <h6 class="mb-1">Đánh giá</h6>
+                <span class="badge rounded-pill bg-light ">
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                </span>
+            </div>
+
+            <div class="d-flex justify-content-evenly mb-2">
+                <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Đặt Ngay</a>
+                <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Xem chi tiết</a>
+            </div>
+        </div>
+        <!--end phong-->
+
+    </div>
+</div>
+
+<div class="col-lg-4 col-md-6 my-3">
+    <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
+        <img src="xuat anh" class="card-img-top">
+
+        <!-- phong -->
+        <div class="card-body">
+            <h5>Xuất tên phòng </h5>
+            <h6>Xuất loại phong</h6>
+            <h6 class="mb-4">Xuất giá phòng / đêm </h6>
+            echo '<div class="features mb-4">';
+                echo '<h6 class="mb-1">Nội Thất :</h6>';
+                echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap"> Giường</span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">Điện Thoại Bàn</span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">Điều Hòa</span>';
+                echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap">cửa xổ </span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">1 Phòng Tắm</span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">1 Vệ Sinh</span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">Ghế</span>';
+                echo '</div>';
+
+            <div class="features mb-4">
+                <h6 class="mb-1">All Dịch vụ</h6>
+                <span class="badge rounded-pill bg-light text-dark texr-wrap">xuat dich vu</span>
+
+            </div>
+
+            <div class="songuoi mb-4">
+                <h6 class="mb-1">Só người có thể chứa</h6>
+                <span class="badge rounded-pill bg-light text-dark texr-wrap">4 người lớn</span>
+                <span class="badge rounded-pill bg-light text-dark texr-wrap">2 trẻ em </span>
+            </div>
+
+            <div class="songuoi mb-4">
+                <h6 class="mb-1">Mô tả</h6>
+                <p>Xuất mo tả</p>
+            </div>
+
+
+            <div class="rating mb-4">
+                <h6 class="mb-1">Đánh giá</h6>
+                <span class="badge rounded-pill bg-light ">
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                </span>
+            </div>
+
+            <div class="d-flex justify-content-evenly mb-2">
+                <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Đặt Ngay</a>
+                <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Xem chi tiết</a>
+            </div>
+        </div>
+        <!--end phong-->
+
+    </div>
+</div>
+
+<div class="col-lg-4 col-md-6 my-3">
+    <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
+        <img src="xuat anh" class="card-img-top">
+
+        <!-- phong -->
+        <div class="card-body">
+            <h5>Xuất tên phòng </h5>
+            <h6>Xuất loại phong</h6>
+            <h6 class="mb-4">Xuất giá phòng / đêm </h6>
+            echo '<div class="features mb-4">';
+                echo '<h6 class="mb-1">Nội Thất :</h6>';
+                echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap"> Giường</span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">Điện Thoại Bàn</span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">Điều Hòa</span>';
+                echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap">cửa xổ </span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">1 Phòng Tắm</span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">1 Vệ Sinh</span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">Ghế</span>';
+                echo '</div>';
+
+            <div class="features mb-4">
+                <h6 class="mb-1">All Dịch vụ</h6>
+                <span class="badge rounded-pill bg-light text-dark texr-wrap">xuat dich vu</span>
+
+            </div>
+
+            <div class="songuoi mb-4">
+                <h6 class="mb-1">Só người có thể chứa</h6>
+                <span class="badge rounded-pill bg-light text-dark texr-wrap">4 người lớn</span>
+                <span class="badge rounded-pill bg-light text-dark texr-wrap">2 trẻ em </span>
+            </div>
+
+            <div class="songuoi mb-4">
+                <h6 class="mb-1">Mô tả</h6>
+                <p>Xuất mo tả</p>
+            </div>
+
+
+            <div class="rating mb-4">
+                <h6 class="mb-1">Đánh giá</h6>
+                <span class="badge rounded-pill bg-light ">
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                </span>
+            </div>
+
+            <div class="d-flex justify-content-evenly mb-2">
+                <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Đặt Ngay</a>
+                <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Xem chi tiết</a>
+            </div>
+        </div>
+        <!--end phong-->
+
+    </div>
+</div>

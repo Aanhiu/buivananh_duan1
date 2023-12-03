@@ -43,7 +43,7 @@ $conn = mysqli_connect($hostname, $svnname, $pass, $dbname);
 // }
 // 
 
-// bôi đen đi
+// 
 function loc($data) {
     // Loại bỏ các khoảng trắng thừa ở đầu và cuối chuỗi
     $data = trim($data);

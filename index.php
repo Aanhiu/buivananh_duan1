@@ -1,15 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php 
-
-//require_once "/buivananh_duan1/admin/inc/db_config.php";
-
-
-
-?>
-
-
-
 
 <head>
     <meta charset="UTF-8">
@@ -104,319 +94,62 @@
     <div class="container">
         <div class="row">
 
-            <!-- 1 cac phong theo ô xuông xuất hiện ở trang chủ-->
-            <div class="col-lg-4 col-md-6 my-3">
-                <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-                    <img src="./pulic/images/rooms/IMG_11892.png" class="card-img-top">
+            <?php
+            // truy van xuât phong 9 bản trong csdl ra home
+            require_once "/buivananh_duan1/admin/inc/db_config.php";
+            $phongQuery = "SELECT * FROM phong LIMIT 9";
+            $phongResult = mysqli_query($conn, $phongQuery);
+            // xuat ra voi phong lap
+            while ($row = mysqli_fetch_assoc($phongResult)) {
+                echo '<div class="col-lg-4 col-md-6 my-3">';
+                echo '<div class="card border-0 shadow" style="max-width: 350px; margin: auto;">';
+                echo '<img src="'.$row['image'].'" alt="Ảnh đang lỗi fix sau" class="card-img-top">';
+                echo ' <div class="card-body">';
+                echo ' <h5>'.$row['name'].' </h5>';
+                echo ' <h6>'.$row['loaiphong_id'].'</h6>';
+                echo ' <h6 class="mb-4">'.$row['gia'].' VNĐ / Đêm </h6>';
+                echo '<div class="features mb-4">';
+                echo '<h6 class="mb-1">Nội Thất :</h6>';
+                echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap"> Giường</span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">Điện Thoại Bàn</span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">Điều Hòa</span>';
+                echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap">cửa xổ </span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">1 Phòng Tắm</span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">1 Vệ Sinh</span>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">Ghế</span>';
+                echo '</div>';
+                echo ' <div class="features mb-4">';
+                echo '  <h6 class="mb-1">Dịch vụ</h6>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">'.$row['dichvu'].'</span>';
+                echo ' </div>';
+                echo ' <div class="songuoi mb-4">';
+                echo '  <h6 class="mb-1">Số người có thể chứa</h6>';
+                echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">2 người lớn</span>';
+                echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap">2 trẻ em </span>';
+                echo ' </div>';
+                echo ' <div class="rating mb-4">';
+                echo ' <h6 class="mb-1">Đánh giá</h6>';
+                echo ' <span class="badge rounded-pill bg-light ">';
+                echo '  <i class="bi bi-star-fill text-warning"></i>';
+                echo '  <i class="bi bi-star-fill text-warning"></i>';
+                echo ' <i class="bi bi-star-fill text-warning"></i>';
+                echo '  <i class="bi bi-star-fill text-warning"></i>';
+                echo ' <i class="bi bi-star-fill text-warning"></i>';
+                echo ' </span>';
+                echo '</div>';
+                echo '  <div class="d-flex justify-content-evenly mb-2">';
+                echo ' <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Đặt Ngay</a>';
+                echo ' <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Xem chi tiết</a>';
+                echo '</div>';
+                echo '</div>';
+                echo ' </div>';
+                echo '</div>';
+            }
 
-                    <!-- phong -->
-                    <div class="card-body">
-                        <h5>Xuất tên phòng </h5>
-                        <h6 class="mb-4">Xuất giá phòng / đêm </h6>
-                        <div class="features mb-4">
-                            <h6 class="mb-1">Đặc Trưng</h6>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">2 Giường</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">1 cửa xổ </span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">1 Ban công</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">3 Ghế</span>
-                        </div>
+            ?>
 
-                        <div class="features mb-4">
-                            <h6 class="mb-1">Dịch Vụ</h6>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Wifi</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Khăn Tắm </span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Đồ cá nhân</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Đồ uống free</span>
-                        </div>
 
-                        <div class="songuoi mb-4">
-                            <h6 class="mb-1">Số người</h6>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">4 người lớn</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">2 trẻ em </span>
-                        </div>
 
-                        <div class="rating mb-4">
-                            <h6 class="mb-1">Đánh giá</h6>
-                            <span class="badge rounded-pill bg-light ">
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                            </span>
-                        </div>
-
-                        <div class="d-flex justify-content-evenly mb-2">
-                            <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Đặt Ngay</a>
-                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Xem chi tiết</a>
-                        </div>
-                    </div>
-                    <!--end phong-->
-
-                </div>
-            </div>
-            <!-- 2 end cac phong theo ô xuông xuất hiện ở trang chủ-->
-
-            <!-- 2 cac phong theo ô xuông xuất hiện ở trang chủ-->
-            <div class="col-lg-4 col-md-6 my-3">
-                <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-                    <img src="./pulic/images/rooms/IMG_11892.png" class="card-img-top">
-
-                    <!-- phong -->
-                    <div class="card-body">
-                        <h5>Xuất tên phòng </h5>
-                        <h6 class="mb-4">Xuất giá phòng / đêm </h6>
-                        <div class="features mb-4">
-                            <h6 class="mb-1">Đặc Trưng</h6>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">2 Giường</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">1 cửa xổ </span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">1 Ban công</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">3 Ghế</span>
-                        </div>
-
-                        <div class="features mb-4">
-                            <h6 class="mb-1">Dịch Vụ</h6>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Wifi</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Khăn Tắm </span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Đồ cá nhân</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Đồ uống free</span>
-                        </div>
-
-                        <div class="songuoi mb-4">
-                            <h6 class="mb-1">Số người</h6>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">4 người lớn</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">2 trẻ em </span>
-                        </div>
-
-                        <div class="rating mb-4">
-                            <h6 class="mb-1">Đánh giá</h6>
-                            <span class="badge rounded-pill bg-light ">
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                            </span>
-                        </div>
-
-                        <div class="d-flex justify-content-evenly mb-2">
-                            <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Đặt Ngay</a>
-                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Xem chi tiết</a>
-                        </div>
-                    </div>
-                    <!--end phong-->
-
-                </div>
-            </div>
-            <!--2 end cac phong theo ô xuông xuất hiện ở trang chủ-->
-
-            <!-- 3 cac phong theo ô xuông xuất hiện ở trang chủ-->
-            <div class="col-lg-4 col-md-6 my-3">
-                <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-                    <img src="./pulic/images/rooms/IMG_11892.png" class="card-img-top">
-
-                    <!-- phong -->
-                    <div class="card-body">
-                        <h5>Xuất tên phòng </h5>
-                        <h6 class="mb-4">Xuất giá phòng / đêm </h6>
-                        <div class="features mb-4">
-                            <h6 class="mb-1">Đặc Trưng</h6>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">2 Giường</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">1 cửa xổ </span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">1 Ban công</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">3 Ghế</span>
-                        </div>
-
-                        <div class="features mb-4">
-                            <h6 class="mb-1">Dịch Vụ</h6>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Wifi</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Khăn Tắm </span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Đồ cá nhân</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Đồ uống free</span>
-                        </div>
-
-                        <div class="songuoi mb-4">
-                            <h6 class="mb-1">Số người</h6>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">4 người lớn</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">2 trẻ em </span>
-                        </div>
-
-                        <div class="rating mb-4">
-                            <h6 class="mb-1">Đánh giá</h6>
-                            <span class="badge rounded-pill bg-light ">
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                            </span>
-                        </div>
-
-                        <div class="d-flex justify-content-evenly mb-2">
-                            <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Đặt Ngay</a>
-                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Xem chi tiết</a>
-                        </div>
-                    </div>
-                    <!--end phong-->
-
-                </div>
-            </div>
-
-             <!-- 1 cac phong theo ô xuông xuất hiện ở trang chủ-->
-             <div class="col-lg-4 col-md-6 my-3">
-                <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-                    <img src="./pulic/images/rooms/IMG_11892.png" class="card-img-top">
-
-                    <!-- phong -->
-                    <div class="card-body">
-                        <h5>Xuất tên phòng </h5>
-                        <h6 class="mb-4">Xuất giá phòng / đêm </h6>
-                        <div class="features mb-4">
-                            <h6 class="mb-1">Đặc Trưng</h6>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">2 Giường</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">1 cửa xổ </span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">1 Ban công</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">3 Ghế</span>
-                        </div>
-
-                        <div class="features mb-4">
-                            <h6 class="mb-1">Dịch Vụ</h6>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Wifi</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Khăn Tắm </span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Đồ cá nhân</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Đồ uống free</span>
-                        </div>
-
-                        <div class="songuoi mb-4">
-                            <h6 class="mb-1">Số người</h6>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">4 người lớn</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">2 trẻ em </span>
-                        </div>
-
-                        <div class="rating mb-4">
-                            <h6 class="mb-1">Đánh giá</h6>
-                            <span class="badge rounded-pill bg-light ">
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                            </span>
-                        </div>
-
-                        <div class="d-flex justify-content-evenly mb-2">
-                            <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Đặt Ngay</a>
-                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Xem chi tiết</a>
-                        </div>
-                    </div>
-                    <!--end phong-->
-
-                </div>
-            </div>
-
-             <!-- 1 cac phong theo ô xuông xuất hiện ở trang chủ-->
-             <div class="col-lg-4 col-md-6 my-3">
-                <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-                    <img src="./pulic/images/rooms/IMG_11892.png" class="card-img-top">
-
-                    <!-- phong -->
-                    <div class="card-body">
-                        <h5>Xuất tên phòng </h5>
-                        <h6 class="mb-4">Xuất giá phòng / đêm </h6>
-                        <div class="features mb-4">
-                            <h6 class="mb-1">Đặc Trưng</h6>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">2 Giường</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">1 cửa xổ </span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">1 Ban công</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">3 Ghế</span>
-                        </div>
-
-                        <div class="features mb-4">
-                            <h6 class="mb-1">Dịch Vụ</h6>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Wifi</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Khăn Tắm </span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Đồ cá nhân</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Đồ uống free</span>
-                        </div>
-
-                        <div class="songuoi mb-4">
-                            <h6 class="mb-1">Số người</h6>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">4 người lớn</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">2 trẻ em </span>
-                        </div>
-
-                        <div class="rating mb-4">
-                            <h6 class="mb-1">Đánh giá</h6>
-                            <span class="badge rounded-pill bg-light ">
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                            </span>
-                        </div>
-
-                        <div class="d-flex justify-content-evenly mb-2">
-                            <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Đặt Ngay</a>
-                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Xem chi tiết</a>
-                        </div>
-                    </div>
-                    <!--end phong-->
-
-                </div>
-            </div>
-
-             <!-- 1 cac phong theo ô xuông xuất hiện ở trang chủ-->
-             <div class="col-lg-4 col-md-6 my-3">
-                <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-                    <img src="./pulic/images/rooms/IMG_11892.png" class="card-img-top">
-
-                    <!-- phong -->
-                    <div class="card-body">
-                        <h5>Xuất tên phòng </h5>
-                        <h6 class="mb-4">Xuất giá phòng / đêm </h6>
-                        <div class="features mb-4">
-                            <h6 class="mb-1">Đặc Trưng</h6>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">2 Giường</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">1 cửa xổ </span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">1 Ban công</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">3 Ghế</span>
-                        </div>
-
-                        <div class="features mb-4">
-                            <h6 class="mb-1">Dịch Vụ</h6>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Wifi</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Khăn Tắm </span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Đồ cá nhân</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">Đồ uống free</span>
-                        </div>
-
-                        <div class="songuoi mb-4">
-                            <h6 class="mb-1">Số người</h6>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">4 người lớn</span>
-                            <span class="badge rounded-pill bg-light text-dark texr-wrap">2 trẻ em </span>
-                        </div>
-
-                        <div class="rating mb-4">
-                            <h6 class="mb-1">Đánh giá</h6>
-                            <span class="badge rounded-pill bg-light ">
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                            </span>
-                        </div>
-
-                        <div class="d-flex justify-content-evenly mb-2">
-                            <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Đặt Ngay</a>
-                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Xem chi tiết</a>
-                        </div>
-                    </div>
-                    <!--end phong-->
-
-                </div>
-            </div>
             <!--3 end cac phong theo ô xuông xuất hiện ở trang chủ-->
             <div class="col-lg-12 text-center mt-5">
                 <a href="phong.php" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow">Xem Thêm</a>
@@ -539,17 +272,7 @@
 
 
 
-    </body>
-
-
-
-
-
-
-
-
-
-
+</body>
 
 
 
