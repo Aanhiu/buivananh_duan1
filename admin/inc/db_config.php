@@ -6,8 +6,6 @@ $dbname = "buivananh_duan1";
 // kết nối 
 $conn = mysqli_connect($hostname, $svnname, $pass, $dbname);
 
-
-
 // hàm loc du lieu dc gui tu bieu mau form 
 // loại bỏ những lí tự khoảng trắng vs bảo vệ dự liệu loại bỏ thẻ html và php ở chuổi , tránh xử
 // lí dữ liệu ko đúng cách 
@@ -64,25 +62,24 @@ $conn = mysqli_connect($hostname, $svnname, $pass, $dbname);
 // fix lỗi hàm loc
 function loc($data)
 {
-    if(is_array($data)){
+    if (is_array($data)) {
         //  neu data la mot mang ap dung ham loc cho moi phan tu cua cua mang
         foreach ($data as $key => $value) {
             //
             $data[$key] = loc($value);
         }
         return $data;
-    }else if(is_string($data)){
+    } else if (is_string($data)) {
         // neu data la mot chuoi ap dubg cac ham lam sach chuop 
         $data = trim($data); // Loại bỏ khoảng trắng thừa
         $data = stripslashes($data); // Loại bỏ backslashes
         $data = htmlspecialchars($data); // Chuyển đổi ký tự đặc biệt thành thực thể HTML
         $data = strip_tags($data); // Loại bỏ các thẻ HTML và PHP
         return $data;
-    }else{
+    } else {
         // neu data ko phai 1 chuoi mag se tra ve 1 mang nguyen ban 
         return $data;
     }
-
 }
 
 // ham truy van du 

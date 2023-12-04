@@ -2,7 +2,6 @@
 require "/buivananh_duan1/admin/inc/essential.php";
 require "/buivananh_duan1/admin/inc/db_config.php";
 adminLogin();
-
 // truy vấn xuất la loai phòng để thêm 
 // Truy vấn lấy danh sách loại phòng
 $loaiPhongQuery = "SELECT * FROM `loai_phong`";
@@ -31,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['them'])) {
         if (move_uploaded_file($fileTmpPath, $destPath)) {
             $imagePath = $destPath;
             // fix lỗi ảnh đường dẫn tuyệt đối thành tuờng đối
-            $imagePath = ' /upload/' .$fileName; 
+            $imagePath = ' /upload/' . $fileName;
 
             //$sql = "INSERT INTO `phong` (`name`, `loaiphong_id`, `image`, `gia`, `dichvu`, `mota`, `trangthai`) VALUES (?, ?, ?, ?, ?, ?, ?)";
             $sql = "INSERT INTO `phong` (`name`, `loaiphong_id`, `image`, `gia`, `dichvu`, `mota`, `trangthai`) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -42,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['them'])) {
 
             $result = mysqli_stmt_execute($stmt);
             // kiêm tra loi khi them phong loi mảng 
-           //mysqli_error($conn);
+            //mysqli_error($conn);
 
             if (!$result) {
                 echo "Lỗi SQL: " . mysqli_error($conn);
@@ -50,7 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['them'])) {
                 echo "Phòng đã được thêm thành công.";
                 //echo "<script>alert'Phòng đã được thêm thành công'</script>";
                 //echo "<script>alert('Phòng đã được thêm thành công')</script>";
-
             }
 
             mysqli_stmt_close($stmt);
@@ -68,7 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['them'])) {
 //$phongQuery = "SELECT * FROM `phong`";
 $phongQuery = "SELECT  phong.*, loai_phong.name AS ten_loai_phong FROM phong INNER JOIN loai_phong ON phong.loaiphong_id = loai_phong.id";
 $phongResult = mysqli_query($conn, $phongQuery);
-
 // chuc nang xoa 
 if (isset($_GET['delete'])) {
     // xoa theo id
@@ -86,10 +83,8 @@ if (isset($_GET['delete'])) {
 }
 // chuc nang sửa làm sau
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -135,8 +130,8 @@ if (isset($_GET['delete'])) {
                                             ?></td>
                                         <td><img src="<?php echo $row['image']; ?>" alt="Ảnh phòng đang bị lỗi sử lí sau" style="width: 100px; height: auto;"></td>
                                         <td><?php echo number_format($row['gia'], 0, '.', ',');
-?></td>
-                                        
+                                            ?></td>
+
                                         <td><?php echo $row['dichvu']; ?></td>
                                         <td><?php echo $row['mota']; ?></td>
                                         <td><?php echo $row['trangthai']; ?></td>
@@ -243,5 +238,4 @@ if (isset($_GET['delete'])) {
 
     <?php require "/buivananh_duan1/admin/inc/scripts.php"; ?>
 </body>
-
 </html>

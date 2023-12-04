@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -152,8 +151,6 @@
 
             ?>
 
-
-
             <!--3 end cac phong theo ô xuông xuất hiện ở trang chủ-->
             <div class="col-lg-12 text-center mt-5">
                 <a href="phong.php" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow">Xem Thêm</a>
@@ -165,33 +162,38 @@
     <!-- cac dich vu them cua khach san-->
     <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font"> Các dịch vụ của khách sạn</h2>
     <div class="container">
-        <div class="row justify-content-evenly px-lg-0 px-md-0 px-5">
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded">
-                <img src="./pulic/images/facilities/w.svg" width="80px">
-                <h5 class="mt-3">Wifi</h5>
-            </div>
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded">
-                <img src="./pulic/images/facilities/d.svg" width="80px">
-                <h5 class="mt-3">Máy lạnh</h5>
-            </div>
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded">
-                <img src="./pulic/images/facilities/giat.jpg" width="80px">
-                <h5 class="mt-3">Giặt ủi</h5>
-            </div>
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded">
-                <img src="./pulic/images/facilities/dien.svg" width="80px">
-                <h5 class="mt-3">Điện</h5>
-            </div>
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded">
-                <img src="./pulic/images/facilities/r.svg" width="80px">
-                <h5 class="mt-3">Radio</h5>
-            </div>
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded">
-                <img src="./pulic/images/facilities/t.svg" width="80px">
-                <h5 class="mt-3">Tivi</h5>
-            </div>
-        </div>
-    </div>
+                    <div class="row justify-content-evenly px-lg-0 px-md-0 px-5">
+                        <div class="col-lg-1 col-md-2 text-center bg-white rounded">
+                            <img src="./pulic/images/facilities/w.svg" width="80px">
+                            <h5 class="mt-3">Wifi</h5>
+                        </div>
+                        <div class="col-lg-1 col-md-2 text-center bg-white rounded">
+                            <img src="./pulic/images/facilities/d.svg" width="80px">
+                            <h5 class="mt-3">Máy lạnh</h5>
+                        </div>
+                        <div class="col-lg-1 col-md-2 text-center bg-white rounded">
+                            <img src="./pulic/images/facilities/giat.jpg" width="80px">
+                            <h5 class="mt-3">Giặt ủi</h5>
+                        </div>
+                        <div class="col-lg-1 col-md-2 text-center bg-white rounded">
+                            <img src="./pulic/images/facilities/dien.svg" width="80px">
+                            <h5 class="mt-3">Điện</h5>
+                        </div>
+                        <div class="col-lg-1 col-md-2 text-center bg-white rounded">
+                            <img src="./pulic/images/facilities/r.svg" width="80px">
+                            <h5 class="mt-3">Radio</h5>
+                        </div>
+                        <div class="col-lg-1 col-md-2 text-center bg-white rounded">
+                            <img src="./pulic/images/facilities/t.svg" width="80px">
+                            <h5 class="mt-3">Tivi</h5>
+                        </div>
+                        <div class="col-lg-1 col-md-2 text-center bg-white rounded">
+                            <img src="./pulic/images/facilities/dt.url" width="80px">
+                            <h5 class="mt-3">Điện Thoại Bàn</h5>
+                        </div>
+
+                    </div>
+                </div>
     <div class="col-lg-12 text-center mt-5">
         <a href="/trang_coso.php" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow">Xem Thêm Các dịch vụ</a>
     </div>
@@ -272,25 +274,11 @@
         <?php require "./inc/footer.php" ?>
 
 
-
-
-
-
-
-
-
-
-
 </body>
-
-
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <!-- Initialize Swiper -->
 <script src="./pulic/js/sile_header.js"></script>
 <script src="./pulic/js/chuyen_anh.js"></script>
-
 </html>
