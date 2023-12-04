@@ -21,13 +21,14 @@
                   <li class="nav-item">
                       <a class="nav-link me-2" href="/phong.php"><i class="bi bi-hospital-fill"></i>Phòng</a>
                   </li>
-                  <li class="nav-item">
-                      <a class="nav-link me-2" href="/giaodien.php"><i class="bi bi-hospital-fill"></i>test</a>
-                  </li>
 
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
+                      <a class="nav-link me-2" href="/giaodien.php"><i class="bi bi-hospital-fill"></i>test</a>
+                  </li> -->
+
+                  <!-- <li class="nav-item">
                       <a class="nav-link me-2" href="/phong_chitiet.php"><i class="bi bi-hospital-fill"></i>Test chi tiết</a>
-                  </li>
+                  </li> -->
 
                   <li class="nav-item">
                       <a class="nav-link me-2" href="/trang_coso.php"><i class="bi bi-bank"></i>Cơ sở Khách sạn</a>

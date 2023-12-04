@@ -7,15 +7,35 @@
     <!-- Đảm bảo đã kết nối Bootstrap 5 -->
     <?php require "./inc/link.php" ?>
 </head>
-
 <body class="gb-light">
     <?php require "./inc/header.php" ?>
-
     <?php
-    // lay thông tin xuat chi tiet phong 
+     require_once "/buivananh_duan1/admin/inc/db_config.php";
+    
+    if(isset($_GET['id'])){
+        // lấy thông tin và xem chi tiết phòng bằng id 
+        $phong_id = $_GET['id'];
 
+        // truy vấn lấy thông tin chi tiết của phòng dựa theo id
+        // truy vấn 
+        $phongchitietQuery = "SELECT * FROM phong WHERE id = $phong_id";
+        // trả kết quả về với biến tạo kết quả 
+        $phongchitietResult = mysqli_query($conn , $phongchitietQuery);
+        
+        if($phongchitietResult){
+            // nêu có các thông tin truy vấn đc cho vào phongchitietResult thì khai báo 1 biến mới dùng mysqli_fetch_assoc lấy dữ liêụ từ mảng kết hợp 
+            $phongchitiet = mysqli_fetch_assoc($phongchitietResult);
+            // xuát chi tiết xuống form bên dưới
+        }else{
+            echo "Lỗi truy vấn chi tiết phòng";
+        }
+        
+    
+
+       
+        
+    }
     ?>
-
 
     <!-- Phần thông tin chi tiết phòng -->
     <section class="container my-5">
@@ -23,14 +43,14 @@
         <div class="row">
             <!-- Cột ảnh phòng -->
             <div class="col-lg-8 mb-3">
-                <img src="path_to_image.jpg" class="img-fluid" alt="Ảnh Phòng">
+                <img src="<?php echo  $phongchitiet['image'] ?>" class="img-fluid" alt="Ảnh Phòng">
             </div>
 
             <!-- Cột thông tin phòng -->
             <div class="col-lg-4">
                 <div class="mb-3">
-                    <h3 class="h-font fw-bold">Xuất tên phòng</h3>
-                    <p class="mb-1"> Xuất loại phòng</p>
+                    <h3 class="h-font fw-bold"><?php  echo $phongchitiet['name']; ?> </h3>
+                    <p class="mb-1"> <?php  echo $phongchitiet['loaiphong_id']; ?> </p>
 
                     <div class="features mb-4">
                         <h6 class="mb-1">Nội Thất :</h6>
@@ -43,7 +63,7 @@
 
                     <div class="features2 mb-4">
                         <h6 class="mb-1">Dịch Vụ :</h6>
-                        <span class="badge rounded-pill bg-light text-dark texr-wrap">Xuat dich vu</span>
+                        <span class="badge rounded-pill bg-light text-dark texr-wrap"><?php  echo $phongchitiet['dichvu']  ?></span>
 
                     </div>
 
@@ -63,14 +83,14 @@
                     </div>
 
 
-                    <h4 class="mb-4"> xuat gia phong500.000 VND/Đêm</h4>
+                    <!-- <h4 class="mb-4"> . number_format($row['gia'], 0, '.', ',') .  </h4> -->
+                    <h4 class="mb-4"> <?php  echo number_format($phongchitiet['gia'], 0, '.', ',') ?> VND / Đêm</h4>
                     <div class="d-grid gap-2">
                         <a href="#" class="btn btn-dark">Đặt Phòng Ngay</a>
                     </div>
                 </div>
             </div>
         </div>
-
 
         <div class="row mt-4">
             <div class="col-12">
@@ -111,30 +131,28 @@
         <div class="row mt-4">
             <div class="col-12">
                 <h3 class="h-font fw-bold">Thông tin chi tiết</h3>
-                <p>Xuấ mô tả</p>
+                <p><?php  echo $phongchitiet['mota'] ?></p>
                 <!-- Thêm mô tả chi tiết khác tại đây -->
             </div>
         </div>
 
 
 
+
+      
         <h4>Bình luận</h4>
         <form>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Tên của bạn</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nhập tên của bạn">
-            </div>
+            
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Nội dung bình luận</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary"></button>
+            <button type="submit" class="btn btn-primary">Bình Luận</button>
         </form>
 
     </section>
 
     <?php require "./inc/footer.php" ?>
+
 </body>
-
 </html>
-

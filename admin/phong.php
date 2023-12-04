@@ -41,7 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['them'])) {
             mysqli_stmt_bind_param($stmt, 'sisdsss', $tenPhong, $loaiPhong, $imagePath, $gia, $dichVu, $moTa, $trangThai);
 
             $result = mysqli_stmt_execute($stmt);
-            mysqli_error($conn);
+            // kiêm tra loi khi them phong loi mảng 
+           //mysqli_error($conn);
 
             if (!$result) {
                 echo "Lỗi SQL: " . mysqli_error($conn);

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,6 +27,7 @@
         margin-bottom: 20px;
     }
 </style>
+
 <body class="gb-light">
     <?php require "./inc/header.php" ?>
     <div class="my-5 px-4">
@@ -90,20 +92,20 @@
                             //echo '<div class="card mb-4 border-0 shadow">';
                             echo '<div class="row g-0 align-items-center">';
                             echo '<div class="col-md-5 ">';
-                            echo '<img class="img-fluid roundeds"  src="' . $row['image'] . '" alt="Ảnh đang bị lỗi fix sau">';
+                            echo '<img class="img-fluid rounded"  src="' . $row['image'] . '" alt="Ảnh lỗi">';
                             echo '</div>';
                             echo '<div class="col-md-5 ">';
                             echo '<h5 class="mb-3">Tên Phòng :' . $row['name'] . '</h5>';
-                            echo '<h6 class="mb-3"> Lọai Phòng : ' . $row['ten_loai_phong'] . '</h6>';
+                            echo '<h6 class="mb-3"> Loại Phòng : ' . $row['ten_loai_phong'] . '</h6>';
                             echo '<div class="features mb-4">';
                             echo '<h6 class="mb-1">Nội Thất :</h6>';
-                            echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap"> Giường</span>';
-                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">Điện Thoại Bàn</span>';
-                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">Điều Hòa</span>';
-                            echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap">cửa xổ </span>';
-                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">1 Phòng Tắm</span>';
-                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">1 Vệ Sinh</span>';
-                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">Ghế</span>';
+                            echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap"><i class="bi bi-bed"></i> Giường</span>';
+                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap"><i class="bi bi-telephone"></i>Điện Thoại Bàn</span>';
+                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap"><i class="bi bi-snow"></i>Điều Hòa</span>';
+                            echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap"> <i class="bi bi-door-open"></i>cửa xổ </span>';
+                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap"><i class="bi bi-bath"></i> 1 Phòng Tắm</span>';
+                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap"><i class="bi bi-house-door"></i>1 Vệ Sinh</span>';
+                            echo '<span class="badge rounded-pill bg-light text-dark texr-wrap"><i class="bi bi-chair"></i>Ghế</span>';
                             echo '</div>';
                             echo '<div class="features2 mb-4">';
                             echo ' <h6 class="mb-1">Dịch Vụ :</h6>';
@@ -132,7 +134,15 @@
                             echo '</div>';
                             echo '</div>';
                             echo '<a href="#" name="booking" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2">Đặt Ngay</a>';
-                            echo '<a href="#" name="chitiet" class="btn btn-sm w-100 btn-outline-dark shadow-none mb-2">Xem chi tiết</a>';
+
+                            //echo '<form method="post" action="phong_chitiet.php">';
+                            //echo '<input type="hidden" name="phong_id" value="' . $row['id'] . '">';
+                           // echo '<button type="submit" name="chitiet" class="btn btn-sm w-100 btn-outline-dark shadow-none mb-2">Xem chi tiết</button>';
+                            ///echo '</form>';
+
+
+                            echo '<a href="phong_chitiet.php?id='.$row['id'].'" name="chitiet" class="btn btn-sm w-100 btn-outline-dark shadow-none mb-2">Xem chi tiết</a>';
+                            
                             echo '</div>';
                             echo '</div>';
                         }

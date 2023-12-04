@@ -1,11 +1,9 @@
 <?php
 require "/buivananh_duan1/admin/inc/db_config.php";
 require "/buivananh_duan1/admin/inc/essential.php";
-
 // ma hoa check xem phien da lam viec voi  adminLogin hay chua neu roi thi vao trang quan tri
 // neu chua dang nhap voi tu cach admin voi tk bao gio thi ko cho vao trang admin 
 // neu da tung lam viec va dang nhap admin truoc do 1 lan roi thi chuyen huong den trang dashboard.php dc dang nhap vao amdin
-
 // test http://localhost:3000/admin/dashboard.php admin =>> thay the dashboard.php http://localhost:3000/admin/index.php da xac nhan da tung dang nhap admin 1 lan roi se chuyen de http://localhost:3000/admin/dashboard.php
 
 session_start();
@@ -82,5 +80,4 @@ if ((isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] == true)) {
 
     <?php require "/buivananh_duan1/admin/inc/scripts.php" ?>
 </body>
-
 </html>

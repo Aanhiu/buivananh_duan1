@@ -143,7 +143,7 @@
                 echo '</div>';
                 echo '  <div class="d-flex justify-content-evenly mb-2">';
                 echo ' <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Đặt Ngay</a>';
-                echo ' <a href="#" class="btn btn-sm btn-outline-dark shadow-none">Xem chi tiết</a>';
+                echo ' <a href="phong_chitiet.php?id='.$row['id'].'" class="btn btn-sm btn-outline-dark shadow-none">Xem chi tiết</a>';
                 echo '</div>';
                 echo '</div>';
                 echo ' </div>';

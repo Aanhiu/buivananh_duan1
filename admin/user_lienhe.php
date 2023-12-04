@@ -2,7 +2,6 @@
 require "/buivananh_duan1/admin/inc/essential.php";
 require "/buivananh_duan1/admin/inc/db_config.php";
 adminLogin();
-
 // chuc nang seen đánh dấu là đã đọc liên hệ & đánh dấu đã đọc all
 // kiểm tra xem đã ấn út đanh dấu đa đọc chưa và thực hiện chức năng isset 
 if (isset($_GET['seen'])) {
@@ -69,12 +68,9 @@ if (isset($_GET['del'])) {
         }
     }
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -153,29 +149,19 @@ if (isset($_GET['del'])) {
                                         query;
                                         $i++;
                                     }
-
                                     ?>
-
                                 </tbody>
                             </table>
-
                         </div>
                         <!-- end bang hien thong tin lien he-->
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     </div>
-
-
 
     <?php
     require "/buivananh_duan1/admin/inc/scripts.php";
     ?>
 </body>
-
 </html>
