@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liên Hệ</title>
     <?php require "./inc/link.php" ?>
 </head>
-
 <body class="gb-light">
     <?php require "./inc/header.php" ?>
 
@@ -85,11 +83,8 @@
         }
         
     }
-    
     ?>
 
     <?php require "./inc/footer.php" ?>
-
 </body>
-
 </html>

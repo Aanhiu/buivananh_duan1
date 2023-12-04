@@ -1,7 +1,8 @@
   <?php
   require('admin/inc/db_config.php');
   require('admin/inc/essential.php');
-  
+  require('admin/nguoidung.php');
+
   ?>
   <!-- menu-->
   <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm -stickky-top">
@@ -104,13 +105,15 @@
   </div>
   <!-- end modal hiện đăng nhập -->
 
+
+
   <!-- modal hiện đăng ký -->
   <div class="modal fade" id="dangkyModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
           <div class="modal-content">
 
               <!-- Form đăng ký đăng nhập tài khoản  -->
-              <form action="">
+              <form method="POST">-
                   <div class="modal-header">
                       <h5 class="modal-title ">
                           <i class="bi bi-person-circle fs-3 me-2 "></i> Đăng ký Tài Khoản
@@ -120,55 +123,54 @@
                   <div class="modal-body">
                       <span class="badge rounded-pill bg-light text-dark mb-3 texr-wrap lh-base">Lưu ý :Thông tin phải đúng với(Thấy tờ tùy nhân ,liên hệ chính chủ v.v) Để có thể xác nhận danh tính khi nhận phòng trân trọng</span>
                       <div class="container-fluid">
+
                           <div class="row">
+
                               <div class="col-md-6 ps-0 mb-3">
                                   <label class="form-label">Tên : </label>
-                                  <input type="text" class="form-control shdow-none">
+                                  <input type="text" name="name" class="form-control shdow-none" required>
                               </div>
 
                               <div class="col-md-6 ps-0 mb-3">
                                   <label class="form-label">Email : </label>
-                                  <input type="email" class="form-control shdow-none">
+                                  <input type="email" name="email" class="form-control shdow-none" required>
                               </div>
 
                               <div class="col-md-6 ps-0 mb-3">
                                   <label class="form-label">Số Điện Thoại: </label>
-                                  <input type="number" class="form-control shdow-none">
+                                  <input style="width: 755px;" type="number" name="sdt" class="form-control shdow-none" required > 
                               </div>
 
-                              <div class="col-md-6 ps-0">
-                                  <label class="form-label">Ảnh </label>
-                                  <input type="file" class="form-control shdow-none">
-                              </div>
-
+                                                  
                               <div class="col-md-12 ps-0">
-                                  <label class="form-label">Địa chỉ</label>
-                                  <textarea class="form-control shadow-none" rows="1"></textarea>
+                                  <label class="form-label">Địa chỉ <span class="badge rounded-pill bg-light text-dark mb-3 texr-wrap lh-base">Lưu ý : Địa chỉ phải có Số nhà , phường , huyện , tỉnh , thành phố !</span></label>
+                                  <textarea name="diachi" class="form-control shadow-none" rows="4" required></textarea>
                               </div>
 
                               <div class="col-md-6 ps-0 mb-3">
-                                  <label class="form-label">MÃ PIN: </label>
-                                  <input type="number" class="form-control shdow-none">
+                                  <label class="form-label">Căn Cước Công Dân</label>
+                                  <input name="cmnd" type="number" class="form-control shdow-none" required>
                               </div>
 
                               <div class="col-md-6 ps-0 mb-3">
                                   <label class="form-label">Ngày Tháng Năm Sinh: </label>
-                                  <input type="date" class="form-control shdow-none">
+                                  <input name="ngaysinh" type="date" class="form-control shdow-none" required>
                               </div>
 
                               <div class="col-md-6 ps-0 mb-3">
                                   <label class="form-label">Mật Khẩu: </label>
-                                  <input type="password" class="form-control shdow-none">
+                                  <input name="pass" type="password" class="form-control shdow-none" required>
                               </div>
 
                               <div class="col-md-6 ps-0 mb-3">
                                   <label class="form-label">Xác Nhận Mật Khẩu: </label>
-                                  <input type="password" class="form-control shdow-none">
+                                  <input name="confirm_pass" type="password" class="form-control shdow-none" required>
                               </div>
+
                           </div>
                       </div>
                       <div class="text-center my-1">
-                          <button type="submit" class="btn btn-dark shadow-none"> Đăng Ký</button>
+                          <button type="submit" name="dangky" class="btn btn-dark shadow-none"> Đăng Ký</button>
                       </div>
                   </div>
               </form>

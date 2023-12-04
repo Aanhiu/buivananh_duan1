@@ -23,7 +23,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="loaiphong.php">Loại Phòng </a>
+                            <a class="nav-link text-white" href="loaiphong.php">Quản lí loại Phòng </a>
                         </li>
                         
                         <li class="nav-item">
@@ -31,7 +31,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="">Quản lí tài khoản </a>
+                            <a class="nav-link text-white" href="/admin/nguoidung.php">Quản lí người dùng</a>
                         </li>
 
                         <li class="nav-item">

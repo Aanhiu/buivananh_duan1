@@ -161,7 +161,7 @@
 
     <!-- cac dich vu them cua khach san-->
     <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font"> Các dịch vụ của khách sạn</h2>
-    <div class="container">
+     <div class="container">
                     <div class="row justify-content-evenly px-lg-0 px-md-0 px-5">
                         <div class="col-lg-1 col-md-2 text-center bg-white rounded">
                             <img src="./pulic/images/facilities/w.svg" width="80px">
