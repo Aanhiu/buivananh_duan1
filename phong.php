@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +26,6 @@
         margin-bottom: 20px;
     }
 </style>
-
 <body class="gb-light">
     <?php require "./inc/header.php" ?>
     <div class="my-5 px-4">
@@ -91,15 +89,12 @@
                         while ($row = mysqli_fetch_assoc($phongResult)) {
                             //echo '<div class="card mb-4 border-0 shadow">';
                             echo '<div class="row g-0 align-items-center">';
-
                             echo '<div class="col-md-5 ">';
-                            echo '<img class="img-fluid roundeds"  src="' . $row['image'] . '" alt="Ảnh đang bị lỗi fix sau">' ;
+                            echo '<img class="img-fluid roundeds"  src="' . $row['image'] . '" alt="Ảnh đang bị lỗi fix sau">';
                             echo '</div>';
-
                             echo '<div class="col-md-5 ">';
                             echo '<h5 class="mb-3">Tên Phòng :' . $row['name'] . '</h5>';
                             echo '<h6 class="mb-3"> Lọai Phòng : ' . $row['ten_loai_phong'] . '</h6>';
-
                             echo '<div class="features mb-4">';
                             echo '<h6 class="mb-1">Nội Thất :</h6>';
                             echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap"> Giường</span>';
@@ -110,19 +105,14 @@
                             echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">1 Vệ Sinh</span>';
                             echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">Ghế</span>';
                             echo '</div>';
-
                             echo '<div class="features2 mb-4">';
                             echo ' <h6 class="mb-1">Dịch Vụ :</h6>';
                             echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">' . $row['dichvu'] . '</span>';
-
                             echo '</div>';
-
                             echo '<div class="songuoi mb-4">';
                             echo '<h6 class="mb-1">Số người có thể chứa :</h6>';
                             echo '<span class="badge rounded-pill bg-light text-dark texr-wrap">2 người lớn</span>';
                             echo ' <span class="badge rounded-pill bg-light text-dark texr-wrap">2 trẻ em</span>';
-
-
                             echo ' <div class="features2 mb-4">';
                             echo ' <h6 class="mb-1">Đánh giá</h6>';
                             echo ' <span class="badge rounded-pill bg-light ">';
@@ -133,7 +123,6 @@
                             echo ' <i class="bi bi-star-fill text-warning"></i>';
                             echo ' </span>';
                             echo '</div>';
-
                             echo '<div class="row">';
                             echo '<div class="col-md-6 text-center">';
                             echo '<h5 class="mb-4">' . number_format($row['gia'], 0, '.', ',') . ' VND/Đêm</h5>';
@@ -144,25 +133,20 @@
                             echo '</div>';
                             echo '<a href="#" name="booking" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2">Đặt Ngay</a>';
                             echo '<a href="#" name="chitiet" class="btn btn-sm w-100 btn-outline-dark shadow-none mb-2">Xem chi tiết</a>';
-
                             echo '</div>';
-                            
-                             echo '</div>';
+                            echo '</div>';
                         }
                         ?>
                     </div>
                 </div>
             </div>
-            </div>
         </div>
-        <!-- end form xuat phong-->
+    </div>
+    <!-- end form xuat phong-->
     </div>
     </div>
-    
-    
-   
 
-<?php require "./inc/footer.php" ?>
+    <?php require "./inc/footer.php" ?>
 </body>
 
 </html>

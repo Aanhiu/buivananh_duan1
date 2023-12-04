@@ -13,7 +13,7 @@ $conn = mysqli_connect($hostname, $svnname, $pass, $dbname);
 // lí dữ liệu ko đúng cách 
 
 //xoa boi den doi thanh loc 
-// function loc($data)
+// function fflocffff($data)
 // {
 //     // fix loi khi chuyền 1 chuõio thành 1 mảng 
 //     // ham dc viết đẻ xử lí các gía trị cuả 1 mảng
@@ -44,23 +44,46 @@ $conn = mysqli_connect($hostname, $svnname, $pass, $dbname);
 // 
 
 // 
-function loc($data) {
-    // Loại bỏ các khoảng trắng thừa ở đầu và cuối chuỗi
-    $data = trim($data);
+// function locloichuafix($data) {
+//     // Loại bỏ các khoảng trắng thừa ở đầu và cuối chuỗi
+//     $data = trim($data);
 
-    // Loại bỏ các dấu backslashes (\)
-    $data = stripslashes($data);
+//     // Loại bỏ các dấu backslashes (\)
+//     $data = stripslashes($data);
 
-    // Chuyển đổi các ký tự đặc biệt thành thực thể HTML
-    // Điều này ngăn chặn tấn công XSS
-    $data = htmlspecialchars($data);
+//     // Chuyển đổi các ký tự đặc biệt thành thực thể HTML
+//     // Điều này ngăn chặn tấn công XSS
+//     $data = htmlspecialchars($data);
 
-    // Loại bỏ các thẻ HTML và PHP khỏi chuỗi
-    $data = strip_tags($data);
+//     // Loại bỏ các thẻ HTML và PHP khỏi chuỗi
+//     $data = strip_tags($data);
 
-    return $data;
+//     return $data;
+// }
+
+// fix lỗi hàm loc
+function loc($data)
+{
+    if(is_array($data)){
+        //  neu data la mot mang ap dung ham loc cho moi phan tu cua cua mang
+        foreach ($data as $key => $value) {
+            //
+            $data[$key] = loc($value);
+        }
+        return $data;
+    }else if(is_string($data)){
+        // neu data la mot chuoi ap dubg cac ham lam sach chuop 
+        $data = trim($data); // Loại bỏ khoảng trắng thừa
+        $data = stripslashes($data); // Loại bỏ backslashes
+        $data = htmlspecialchars($data); // Chuyển đổi ký tự đặc biệt thành thực thể HTML
+        $data = strip_tags($data); // Loại bỏ các thẻ HTML và PHP
+        return $data;
+    }else{
+        // neu data ko phai 1 chuoi mag se tra ve 1 mang nguyen ban 
+        return $data;
+    }
+
 }
-
 
 // ham truy van du 
 function select($sql, $values, $datatypes)
