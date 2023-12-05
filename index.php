@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +9,6 @@
     <title>Trang Chủ </title>
     <?php require "./inc/link.php" ?>
 </head>
-
 <body class="gb-light">
     <?php require "./inc/header.php" ?>
     <!-- sile ảnh -->
@@ -90,7 +92,6 @@
     <!-- phong trang chủ-->
     <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font"> Phòng Sang trọng của chúng tôi</h2>
 
-  
     <div class="container">
         <div class="row">
 
@@ -270,12 +271,9 @@
     </div>
     </div>
         <!-- end các bài viết blog về khách san-->
-
         <?php require "./inc/footer.php" ?>
 
-
 </body>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <!-- Initialize Swiper -->

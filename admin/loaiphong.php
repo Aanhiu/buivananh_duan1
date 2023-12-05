@@ -17,12 +17,9 @@ if (isset($_GET['delete'])) {
         echo "<script>alert('Lỗi khi xóa loại phòng'); window.location='loaiphong.php';</script>";
     }
 }
-
 // chuc nang sua du lieu
 // lam sau 
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 

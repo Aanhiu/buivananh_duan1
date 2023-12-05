@@ -16,10 +16,10 @@ if (isset($_GET['delete'])) {
         echo "<script>alert('Lỗi khi xóa tài khoản lỗi !!!'); window.location='nguoidung.php';</script>";
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,21 +51,25 @@ if (isset($_GET['delete'])) {
                                         <th scope="col">SDT</th>
                                         <th scope="col">Địa chỉ</th>
                                         <th scope="col">CMND</th>
-                                        <th scope="col">Ngày sinh</th>
-                                        <th scope="col">Time tạo tài khoản</th>
+                                        <th scope="col">Chức Vụ</th>
                                         
+                                        <th scope="col">Time tạo tài khoản</th>
+
                                         <th scope="col">Hành Động </th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                <?php 
-                                //xuat các tài khoản
-                                $q = "SELECT * FROM `nguoi_dung` ORDER BY `id` DESC ";
-                                $data = mysqli_query($conn, $q);
-                                $i = 1;
-                                while ($row = mysqli_fetch_assoc($data)) {
-                                echo <<<query
+                                    <?php
+
+                                    //xuat các tài khoản
+                                    $q = "SELECT * FROM `nguoi_dung` ORDER BY `id` DESC ";
+                                    $data = mysqli_query($conn, $q);
+                                    
+                                    $i = 1;
+                                    while ($row = mysqli_fetch_assoc($data)) {
+                                      
+                                        echo <<<query
                                 <tr>
                                 <td>$i</td>
                                 <td>$row[name]</td>
@@ -73,15 +77,15 @@ if (isset($_GET['delete'])) {
                                 <td>$row[sdt]</td>
                                 <td>$row[diachi]</td>
                                 <td>$row[cmnd]</td>
-                                <td>$row[ngaysinh]</td>
+                                <td>$row[vaitro]</td>
+                                
                                 <td>$row[datetimeacc]</td>
                                 <td><a href="?delete=$row[id]" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</a></td>
                                 </tr>
                                 query;
-                                $i = 1;
-
-                                }
-                                ?>
+                                        $i++;
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
@@ -96,5 +100,5 @@ if (isset($_GET['delete'])) {
     require "/buivananh_duan1/admin/inc/scripts.php";
     ?>
 </body>
-</html>
 
+</html>
