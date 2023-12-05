@@ -147,7 +147,7 @@ if (isset($_GET['del'])) {
                                         <td>$seen</td>
                                         </tr>
                                         query;
-                                        $i++;
+                                        $i = 1;
                                     }
                                     ?>
                                 </tbody>
