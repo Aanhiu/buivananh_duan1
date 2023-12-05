@@ -51,6 +51,10 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link text-white" href="/index.php">Về Trang chủ</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link text-white" href="caidat.php">Cài Đặt </a>
                         </li>
                       
