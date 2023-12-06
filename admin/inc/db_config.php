@@ -187,3 +187,6 @@ function xoa($sql, $values, $datatypes)
         die("Khong cap nhat va truy van du lieu tu preparad - DELETE !!!");
     }
 }
+
+
+

@@ -29,7 +29,7 @@ session_regenerate_id(true);
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden" >
-               <h1>Trang Tổng Quan</h1>
+               <h1>Chào Mừng Ánh Admin</h1>
     </div>
 
 

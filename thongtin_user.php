@@ -1,14 +1,12 @@
 <?php
-
 //đăng xuất
-if(isset($_POST['dangxuat'])) {
+if (isset($_POST['dangxuat'])) {
     session_start();
     session_destroy(); // Xóa tất cả session
     header("Location: index.php"); // Chuyển hướng người dùng về trang chủ
     exit;
 }
-// ?>
-
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +46,8 @@ if(isset($_POST['dangxuat'])) {
 
     <!-- phong trang chủ-->
     <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">Chức năng của trang website</h2>
-    <div class="col-lg-2 bg-warning border-top border-3 border-secondary" id="dashboard-menu" style="height: 800px;">
+
+    <div class="col-lg-2 bg-warning border-top border-3 border-secondary" id="dashboard-menu" style="height: 500px;">
 
         <nav class="navbar navbar-expand-lg ">
             <div class="container-fluid flex-lg-column align-items-stretch">
@@ -57,7 +56,6 @@ if(isset($_POST['dangxuat'])) {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse flex-column align-items-stretch mt-2" id="loc">
-
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
                             <h3> <a class="nav-link" href="#">Tổng quan</a></h3>
@@ -91,7 +89,11 @@ if(isset($_POST['dangxuat'])) {
                             <a class="nav-link text-white" href="index.php">Về trang chủ</a>
                         </li>
 
-                        <form  method="post">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#"></a>
+                        </li>
+
+                        <form method="post">
                             <button type="submit" name="dangxuat" class="btn btn-outline-dark shadow-none me-lg-3 me-2">
                                 Đăng Xuất
                             </button>

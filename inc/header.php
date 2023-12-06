@@ -87,20 +87,19 @@
                 // lưu thông tin vào $_SESSION
                 $_SESSION['user_id'] = $row['id'];
                 $_SESSION['user_name'] = $row['name'];
+                //echo "<script>alert('Đăng Nhập Thành Công .'); window.location='index.php';</script>";
                 header("Location: index.php");
+               
             } else {
-                echo "Mật khẩu không đúng";
+                echo "<script>alert('Mật khẩu không đúng !!!'); window.location='index.php';</script>";
             }
         } else {
-            echo "Email không tồn tại";
+            echo "<script>alert('Email không đúng !!!'); window.location='index.php';</script>";
         }
     }
     $isLoggedIn = isset($_SESSION['user_id']); // Kiểm tra xem có session user_id không
 
     // end chuc nang dang nhap
-
-
-
 
     ?>
   <!-- menu-->
@@ -203,7 +202,7 @@
 
                           <button type="submit" name="dangnhap" class="btn btn-dark shodow-none">Đăng Nhập</button>
 
-                          <a href="javascript: void(0)" class="text-secondary text-deconration-none">Lấy Lại mật khẩu ? </a>
+                          <a href="/quenmk.php" class="text-secondary text-deconration-none">Lấy Lại mật khẩu ? </a>
                       </div>
 
                   </div>

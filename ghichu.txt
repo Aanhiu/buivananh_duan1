@@ -70,3 +70,12 @@ chạy trang index.php đầu tiên là trang chủ
             return;
         }
     }
+
+
+    hướng đi 
+http://localhost:3000/forgot-password.php nhập email đã đăng ký để dc gửi code ấn contine
+
+http://localhost:3000/reset-code.php vào email xem code nhập vào và ất submit  sau đó nhập code vào ấn sumbmit tiếp 
+
+đến trang http://localhost:3000/new-password.php nhập pass mới và xác nhân pass ấn change ok hiện thông báo đôi mk thành công sẽ chuyển trang tiếp
+sau đó chuyển đến http://localhost:3000/password-changed.php  có thể ấn vào  login ngay bây giờ login now đến trang login now
