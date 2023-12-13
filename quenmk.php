@@ -24,10 +24,12 @@ require_once "/buivananh_duan1/classphp_password.php";
                     <p class="text-center">Nhập Email của bạn để lấy lại mật khẩu</p>
                     <!-- xuất lỗi ở trên đầu form lấy lại mk -->
                     <?php
+                    // kiểm tra đếm nếu lớn hơn 0 thì xuất ra thông báo lỗi bên dưới
                     if (count($errors) > 0) {
                     ?>
                         <div class="alert alert-danger text-center">
                             <?php
+                            //uất ra thông báo lỗi bên dưới
                             foreach ($errors as $error) {
                                 echo $error;
                             }

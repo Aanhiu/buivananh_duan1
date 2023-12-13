@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require "/buivananh_duan1/admin/inc/db_config.php";
 require("PHPMailer-master/src/PHPMailer.php");
@@ -9,7 +8,6 @@ require("PHPMailer-master/src/Exception.php");
 $email = "";
 $name = "";
 $errors = array();
-
 // Xu ly gui email cấu hình hàm gửi email lất mã code và nhập xác minh và đổi mk
 function sendVerificationEmail($email, $subject, $message)
 {
@@ -34,8 +32,6 @@ function sendVerificationEmail($email, $subject, $message)
         return true;
     }
 }
-
-// 
 
 //if user click continue button in forgot password form
 // nếu người dùng ấn vào nút contine thì sẽ kiểm tra email đã có 

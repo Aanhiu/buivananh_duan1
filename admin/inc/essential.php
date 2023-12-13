@@ -1,4 +1,5 @@
 <?php
+require_once "/buivananh_duan1/admin/inc/db_config.php";
 // frontend purpose data // du lieu cho muc dinh giao dien người dùng 
 //http://localhost:3000/buivananh_duan1
 //http://127.0.0.1:80/buivananh_duan1, where ":80" is the default port for HTTP traffic. 
@@ -35,7 +36,7 @@ function pageadmin($url)
 // ham check adminLogin
 function adminLogin()
 {
-    session_start();
+    //session_start();
     if (!(isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] == true)) {
         // neu ko phai la ad thi ve trang dang nhap
         echo "

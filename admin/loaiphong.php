@@ -1,6 +1,7 @@
 <?php
-require "/buivananh_duan1/admin/inc/essential.php";
 require "/buivananh_duan1/admin/inc/db_config.php";
+require "/buivananh_duan1/admin/inc/essential.php";
+
 adminLogin();
 // chuc nang xoa 
 if (isset($_GET['delete'])) {
@@ -22,7 +23,6 @@ if (isset($_GET['delete'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +32,6 @@ if (isset($_GET['delete'])) {
     require "/buivananh_duan1/admin/inc/link_admin.php";
     ?>
 </head>
-
 <body class="bg-light">
     <?php require "/buivananh_duan1/admin/inc/header.php"; ?>
     <div class="container-fluid" id="main-content">
@@ -75,7 +74,7 @@ if (isset($_GET['delete'])) {
                                         <td>$row[name]</td>
                                         <td>$row[mota]</td>
                                         
-                                        <td><a href="?edit=$row[id]">Sửa</a></td>
+                                        <td><a href="sualoaiphong.php?id={$row['id']}">Sửa</a></td>
                                         <td><a href="?delete=$row[id]" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</a></td>
                                         </tr>
                                         query;

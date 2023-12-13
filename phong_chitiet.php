@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
     <!-- Đảm bảo đã kết nối Bootstrap 5 -->
     <?php require "./inc/link.php" ?>
 </head>
-
 <body class="gb-light">
     <?php require "./inc/header.php" ?>
     <?php
@@ -20,8 +18,10 @@
 
         // truy vấn lấy thông tin chi tiết của phòng dựa theo id
         // truy vấn 
-        $phongchitietQuery = "SELECT * FROM phong WHERE id = $phong_id";
-
+        //$phongchitietQuery = "SELECT * FROM phong WHERE id = $phong_id";
+        $phongchitietQuery = "SELECT phong.*, loai_phong.name AS loai_phong FROM phong 
+                     JOIN loai_phong ON phong.loaiphong_id = loai_phong.id
+                     WHERE phong.id = $phong_id";
         // fix hiên thi tên loai phòng sau
 
         // trả kết quả về với biến tạo kết quả 
@@ -43,14 +43,16 @@
         <div class="row">
             <!-- Cột ảnh phòng -->
             <div class="col-lg-8 mb-3">
+                <h4>Ảnh</h4>
                 <img src="<?php echo  $phongchitiet['image'] ?>" class="img-fluid" alt="Ảnh Phòng">
             </div>
 
             <!-- Cột thông tin phòng -->
             <div class="col-lg-4">
                 <div class="mb-3">
-                    <h3 class="h-font fw-bold"><?php echo $phongchitiet['name']; ?> </h3>
-                    <p class="mb-1"> <?php echo $phongchitiet['loaiphong_id']; ?> </p>
+                    <h3 class="h-font fw-bold">Tên phòng : <?php echo $phongchitiet['name']; ?> </h3>
+                    <p class="mb-1"> <?php //echo $phongchitiet['loaiphong_id']; ?> </p>
+                    <p class="mb-1"> Loại Phòng : <?php echo $phongchitiet['loai_phong']; ?> </p>
 
                     <div class="features mb-4">
                         <h6 class="mb-1">Nội Thất :</h6>
@@ -68,25 +70,35 @@
                     </div>
 
                     <div class="songuoi mb-4">
-                        <h6 class="mb-1">Số người có thể chứa :</h6>
+                        <h6 class="mb-1">Số người :</h6>
                         <span class="badge rounded-pill bg-light text-dark texr-wrap">2 người lớn</span>
                         <span class="badge rounded-pill bg-light text-dark texr-wrap">2 trẻ em</span>
                     </div>
 
                     <div class="mb-2">
-                        <h6>Đánh giá</h6>
-                        <i class="bi bi-star-fill text-warning"></i>
+                        <h6>Chất Lượng :</h6>
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
                     </div>
 
+                    <div class="mb-2">
+                        <h6>Tình Trạng :</h6>
+                        <span style="font-size: 20px;" class="badge rounded-pill bg-light text-dark texr-wrap"><?php echo trangThaiPhong($phongchitiet['trangthai']); ?></span>
+
+                    </div>
 
                     <!-- <h4 class="mb-4"> . number_format($row['gia'], 0, '.', ',') .  </h4> -->
                     <h4 class="mb-4"> <?php echo number_format($phongchitiet['gia'], 0, '.', ',') ?> VND / Đêm</h4>
                     <div class="d-grid gap-2">
-                        <a href="#" class="btn btn-dark">Đặt Phòng Ngay</a>
+
+                        <?php if ($isLoggedIn) : ?>
+                            <a href="booking.php?id=<?php echo $phongchitiet['id'] ?>" class="btn btn-dark">Đặt Ngay</a>
+                        <?php else : ?>
+                            <a href="#" onclick="alert('Bạn cần đăng nhập để thực hiện đặt phòng.');" class="btn btn-dark">Đặt Ngay</a>
+                        <?php endif; ?>
+
                     </div>
                 </div>
             </div>
@@ -122,7 +134,7 @@
                             <h5 class="mt-3">Tivi</h5>
                         </div>
                         <div class="col-lg-1 col-md-2 text-center bg-white rounded">
-                            <img src="./pulic/images/facilities/dt.url" width="80px">
+                            <img src="https://th.bing.com/th/id/OIP.rLGYYFSpoakm4F0OQVhoGAHaHx?rs=1&pid=ImgDetMain" width="80px">
                             <h5 class="mt-3">Điện Thoại Bàn</h5>
                         </div>
 
@@ -157,7 +169,7 @@
                     <li><img src="/pulic/images/facilities/w.svg" style="width: 60px;">Dịch vụ WIFI</li>
                     <li><img src="/pulic/images/facilities/r.svg" style="width: 60px;">Dịch vụ Radio</li>
                     <li><img src="/pulic/images/facilities/t.svg" style="width: 60px;">Dịch vụ Tivi</li>
-                    <li><img src="/pulic/images/facilities/dt.url" style="width: 60px;">Dịch vụ Điện Thoại Bàn</li>
+                    <li><img src="https://th.bing.com/th/id/OIP.rLGYYFSpoakm4F0OQVhoGAHaHx?rs=1&pid=ImgDetMain" style="width: 60px;">Dịch vụ Điện Thoại Bàn</li>
 
                 </ul>
             </div>
@@ -207,25 +219,7 @@
             </div>
 
 
-
-
-
-
-
-            <h4>Bình luận</h4>
-            <form>
-
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Nội dung bình luận</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Bình Luận</button>
-            </form>
-
     </section>
-
     <?php require "./inc/footer.php" ?>
-
 </body>
-
 </html>

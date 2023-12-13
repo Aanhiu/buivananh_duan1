@@ -14,9 +14,6 @@
     font-weight: 500;
 }
 
-
-
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -32,13 +29,10 @@ input[type=number] {
     border: 1px solid var(--teal) ;
 }
 
-
-
 .custom-bg:hover {
     background-color :var(--teal_hover);
     border-color: var(--teal_hover);
 }
-
 
 /* //// */
 .availability-form {
@@ -60,9 +54,6 @@ input[type=number] {
     height: 1.7px;
 }
 
-
-
-
 #dashboard-menu{
     background-color: black;
     position: fixed;
@@ -74,9 +65,7 @@ input[type=number] {
         position: fixed;
         height: auto;
         width:100%;
-
     }
-
 }
 
 #main-content{

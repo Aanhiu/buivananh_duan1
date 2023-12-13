@@ -1,4 +1,5 @@
         <!-- footer -->
+          
         <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">Về chúng tôi</h2>
         <div class="container" style="border: 1px black solid;">
             <div class="row">
@@ -57,5 +58,6 @@
                 </div>
             </div>
         </div>
+                    
 <h6 class="text-center bg-dark text-white p-3 m-0">Trang web Thuộc Bùi Văn Ánh Devlopped By IT</h6>
  <!-- end footer-->

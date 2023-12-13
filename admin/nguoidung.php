@@ -1,6 +1,7 @@
 <?php
+require "/buivananh_duan1/admin/inc/db_config.php";
 require_once "/buivananh_duan1/admin/inc/essential.php";
-require_once "/buivananh_duan1/admin/inc/db_config.php";
+
 adminLogin();
 // chuc năng xóa người dùng
 if (isset($_GET['delete'])) {
@@ -54,6 +55,7 @@ if (isset($_GET['delete'])) {
                                         <th scope="col">Chức Vụ</th>
                                         
                                         <th scope="col">Time tạo tài khoản</th>
+                                        <th scope="col">Phân Quyền</th>
 
                                         <th scope="col">Hành Động </th>
                                     </tr>
@@ -80,6 +82,7 @@ if (isset($_GET['delete'])) {
                                 <td>$row[vaitro]</td>
                                 
                                 <td>$row[datetimeacc]</td>
+                                <td>lam phan quyen</td>
                                 <td><a href="?delete=$row[id]" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</a></td>
                                 </tr>
                                 query;

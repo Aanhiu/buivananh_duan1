@@ -1,4 +1,5 @@
 <?php
+session_start();
 $hostname = "localhost";
 $svnname = "root";
 $pass = "";
@@ -188,5 +189,23 @@ function xoa($sql, $values, $datatypes)
     }
 }
 
+// ham thay doi  trang thai 
+
+// dat trang thai phong khi them 
+// nguoi dùng book phong và dc xác nhận đặt phòng phòng sẽ có trạng thái ko thẻ thuê
+function trangThaiPhong($trangThai)
+{
+    return $trangThai == 0 ? "Có thể thuê" : "Không thể thuê";
+} 
+
+function danhxuat(){
+    if (isset($_POST['dangxuat'])) {
+        session_start();
+        session_destroy(); // Xóa tất cả session
+        header("Location:index.php"); // Chuyển hướng người dùng về trang chủ
+        exit;
+        //require "/buivananh_duan1/index.php";
+    }
+}
 
 

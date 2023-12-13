@@ -1,6 +1,7 @@
 <?php
-require "/buivananh_duan1/admin/inc/essential.php";
 require "/buivananh_duan1/admin/inc/db_config.php";
+require "/buivananh_duan1/admin/inc/essential.php";
+
 adminLogin();
 // chuc nang seen đánh dấu là đã đọc liên hệ & đánh dấu đã đọc all
 // kiểm tra xem đã ấn út đanh dấu đa đọc chưa và thực hiện chức năng isset 

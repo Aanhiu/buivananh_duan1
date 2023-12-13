@@ -1,12 +1,11 @@
 <?php
-require "/buivananh_duan1/admin/inc/essential.php";
 require "/buivananh_duan1/admin/inc/db_config.php";
+require "/buivananh_duan1/admin/inc/essential.php";
 adminLogin();
 // truy vấn xuất la loai phòng để thêm 
 // Truy vấn lấy danh sách loại phòng
 $loaiPhongQuery = "SELECT * FROM `loai_phong`";
 $loaiPhongResult = mysqli_query($conn, $loaiPhongQuery);
-
 // theem phong vào csdl
 // 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['them'])) {
@@ -17,8 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['them'])) {
     $gia = floatval(loc($_POST['gia']));
     $dichVu = loc($_POST['dichvu']);
     $moTa = loc($_POST['mota']);
-    $trangThai = loc($_POST['trangthai']);
-
+    // mặc định là 1 trong csdl là có thể thuê khi book phòng và xác nhận sẽ chập nhật thành 2 là ko thể thuê và khi người dùng check out và ad xác nhận check out trả phòng sẽ xuất hiện lại phòng thành 1 có thẻ thuê mất đi 2 ko thể thuê
+    $trangThai = 0;
 
     // kiem tra xem nguoi dung da đã up file ảnh vào trường ô ảnh hay chưa và ảnh lỗi phải bằng 0 tiến hành sử lí ảnh]\kmn  
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
@@ -37,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['them'])) {
 
             $stmt = mysqli_prepare($conn, $sql);
             //mysqli_stmt_bind_param($stmt, 'sisssss', $tenPhong, $loaiPhong, $imagePath, $gia, $dichVu, $moTa, $trangThai);
-            mysqli_stmt_bind_param($stmt, 'sisdsss', $tenPhong, $loaiPhong, $imagePath, $gia, $dichVu, $moTa, $trangThai);
+            mysqli_stmt_bind_param($stmt, 'sisdssi', $tenPhong, $loaiPhong, $imagePath, $gia, $dichVu, $moTa, $trangThai);
 
             $result = mysqli_stmt_execute($stmt);
             // kiêm tra loi khi them phong loi mảng 
@@ -62,6 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['them'])) {
     }
 }
 
+
 // xuat phong 
 //$phongQuery = "SELECT * FROM `phong`";
 $phongQuery = "SELECT  phong.*, loai_phong.name AS ten_loai_phong FROM phong INNER JOIN loai_phong ON phong.loaiphong_id = loai_phong.id";
@@ -80,11 +80,15 @@ if (isset($_GET['delete'])) {
     } else {
         echo "<script>alert('Lỗi khi xóa phòng'); window.location='phong.php';</script>";
     }
+
+    // ham hiện trạng thái phòng
+
 }
 // chuc nang sửa làm sau
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -119,43 +123,48 @@ if (isset($_GET['delete'])) {
                                     <th scope="col">Giá</th>
                                     <th scope="col">Dich vụ</th>
                                     <th scope="col">Mô tả</th>
+                                    <!-- Trạng Thái khi người dùng đặt phòng và amdin xác nhận đặt phòng sẽ hiện ko thể thuê ở admin và index sau đó chặn ko cho book phòng ở bên ngoài giao diện -->
                                     <th scope="col">Trạng Thái</th>
                                     <th scope="col" style="text-align: center;">Hành Động</th>
                                 </tr>
+                                <?php
+                                // dat trang thai phong khi them 
+                                // nguoi dùng book phong và dc xác nhận đặt phòng phòng sẽ có trạng thái ko thẻ thuê
+                                // function trangThaiPhong($trangThai)
+                                // {
+                                //     return $trangThai == 1 ? "Có thể thuê" : "Không thể thuê";
+                                // } 
+
+                                ?>
+
                                 <?php while ($row = mysqli_fetch_assoc($phongResult)) : ?>
                                     <tr>
                                         <td><?php echo $row['id']; ?></td>
                                         <td><?php echo $row['name']; ?></td>
                                         <td><?php echo $row['ten_loai_phong']; // đã join để lấy tên loại phòng thay đổi thành ten_loai_phong
                                             ?></td>
-                                        <td><img src="<?php echo $row['image']; ?>" alt="Ảnh phòng đang bị lỗi sử lí sau" style="width: 100px; height: auto;"></td>
+                                        <td><img src="<?php echo $row['image']; ?>" alt="Ảnh phòng " style="width: 100px; height: auto;"></td>
                                         <td><?php echo number_format($row['gia'], 0, '.', ',');
                                             ?></td>
 
                                         <td><?php echo $row['dichvu']; ?></td>
                                         <td><?php echo $row['mota']; ?></td>
-                                        <td><?php echo $row['trangthai']; ?></td>
+                                        <td> <?php echo trangThaiPhong($row['trangthai']); ?> </td>
+
                                         <!-- Các hành động như chỉnh sửa/xóa -->
-                                        <td><a href="?edit=<?php // lam sau; 
-                                                            ?> ">Sửa</a></td>
+                                        <td><a href="suaphong.php?id=<?php echo $row['id']; ?> "class="btn btn-primary">Sửa</a></td>
 
                                         <td><a href="?delete=<?php echo $row['id']; ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</a></td>
-
-
+                                        
                                     </tr>
                                 <?php endwhile; ?>
                             </table>
-
                             <tbody id="room=-data"> </tbody>
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
     <!--modal them phong-->
@@ -167,14 +176,12 @@ if (isset($_GET['delete'])) {
                         <h5 class="modal-title">Them Phong</h5>
                     </div>
                     <div class="row">
-
                         <div class="modal-body">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label fw-bold">Ten</label>
                                 <input type="text" name="name" class="form-control shadow" required>
                             </div>
                         </div>
-
                         <!-- xuat loai phong de them phong vs loai phong  do-->
                         <div class="modal-body">
                             <div class="col-md-6 mb-3">
@@ -187,8 +194,6 @@ if (isset($_GET['delete'])) {
                                 </select>
                             </div>
                         </div>
-
-
 
                         <div class="modal-body">
                             <div class="col-md-6 mb-3">
@@ -216,13 +221,12 @@ if (isset($_GET['delete'])) {
                             <textarea name="mota" required class="form-control shadow-none" rows="5" style="resize: none;"></textarea>
                         </div>
 
-                        <div class="modal-body">
+                        <!-- <div class="modal-body">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label fw-bold">Trạng Thái</label>
                                 <input type="text" name="trangthai" class="form-control shadow" required>
                             </div>
-                        </div>
-
+                        </div> -->
                     </div>
 
                     <div class="modal-footer">
@@ -230,12 +234,11 @@ if (isset($_GET['delete'])) {
                         <button type="submit" name="them" class="btn bg-custom text-dark shadow-none">Them</button>
                     </div>
                 </div>
-
         </div>
         </form>
     </div>
     <!--end modal them phong-->
-
     <?php require "/buivananh_duan1/admin/inc/scripts.php"; ?>
 </body>
+
 </html>

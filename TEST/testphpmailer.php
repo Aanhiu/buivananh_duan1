@@ -31,8 +31,8 @@
     $mail->Password = "hacrqlxgredgyqze";
     $mail->SetFrom("buianh2592003@gmail.com");
     $mail->Subject = "Aanhiu";
-    $mail->Body = "xin chao";
-    $mail->AddAddress("buianh20003@gmail.com");
+    $mail->Body = "Cái địt mẹ mày";
+    $mail->AddAddress("tudvph32325@fpt.edu.vn");
 
      if(!$mail->Send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;
