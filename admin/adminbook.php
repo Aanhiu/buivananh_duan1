@@ -138,10 +138,22 @@ if (isset($_GET['confirm'])) {
                                                                     echo "Đã xác nhận";
                                                                 } elseif ($row['trangthai'] == 2) {
                                                                     echo "Đã hủy";
+                                                                } elseif ($row['trangthai'] == 3) {
+                                                                    echo "Đã Check in";
+                                                                } elseif ($row['trangthai'] == 4) {
+                                                                    echo "Đã check out";
+                                                                } elseif ($row['trangthai'] == 5) {
+                                                                    echo "Đã xác nhận check in ";
+                                                                } elseif ($row['trangthai'] == 6) {
+                                                                    echo "Đã xác nhận check out";
+                                                                } elseif ($row['trangthai'] == 7) {
+                                                                    echo "Đã hoàn thành đơn đặt phòng";
                                                                 } else {
                                                                     echo "Không xác định";
                                                                 }
-                                                                ?></th>
+                                                                ?>
+
+                                                </th>
                                             <td>
                                                 <a href="?delete=<?php echo $row['id']; ?>" onclick="return confirm('Bạn có chắc muốn hủy đặt phòng này không !!!')" class="btn btn-danger btn-sm">Hủy Đặt</a> <br>
                                                 <!-- Hiển thị nút "Xác nhận" chỉ khi trạng thái là "Chờ xác nhận" -->

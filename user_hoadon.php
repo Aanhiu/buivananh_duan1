@@ -168,13 +168,13 @@ if (isset($_GET['delete'])) {
                                             <!-- xuất ra các phòng đc đặt với vòng lặp  -->
                                             <input type="hidden" <?php echo htmlspecialchars($row['id']); ?>>
                                             <th scope="col"><?php echo htmlspecialchars($row['nguoiDungTen']); ?></th>
-                                            <th scope="col"><?php echo htmlspecialchars($row['email']); ?></th>
+                                            <th scope="col"> <?php echo htmlspecialchars($row['email']); ?> </th>
                                             <th scope="col"><?php echo htmlspecialchars($row['sdt']); ?></th>
                                             <th scope="col"><?php echo htmlspecialchars($row['diachi']); ?></th>
                                             <th scope="col"><?php echo htmlspecialchars($row['cmnd']); ?></th>
                                             <th scope="col"><?php echo htmlspecialchars($row['tenPhong']); ?></< /th>
                                             <th scope="col"> <?php echo htmlspecialchars($row['loaiphong_id']); ?> </th>
-                                            <th scope="col"><img src="<?php echo htmlspecialchars($row['image']); ?>" width="150px" height="100px"></th>
+                                            <th scope="col"><img src="<?php echo htmlspecialchars($row['image']); ?>" width="150px" height="100px"> </th>
                                             <th scope="col"><?php echo htmlspecialchars($row['dichvu']); ?></th>
                                             <th scope="col"><?php echo htmlspecialchars($row['NgayBatDau']); ?></th>
                                             <th scope="col"><?php echo htmlspecialchars($row['NgayKetThuc']); ?></th>
@@ -200,8 +200,9 @@ if (isset($_GET['delete'])) {
 
                                             <?php if ($row['trangthai'] == 1) : ?>
                                                 
-                                                <th scope="col">   <a href="user_checkin_out.php" class="btn btn-primary btn-sm">Check in & Check out</a> </th>
-
+                                                
+                                                <th scope="col"> <a href="user_checkin_out.php?id=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm">Check in & Check out</a>
+ </th> 
                                             <?php else : ?>
 
                                                 <th scope="col"> <a href="?delete=<?php echo $row['id']; ?>" onclick="return confirm('Bạn có chắc muốn hủy đặt phòng chứ ?')" class="btn btn-danger btn-sm">Hủy</a></th>
