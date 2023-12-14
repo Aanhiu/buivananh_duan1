@@ -130,9 +130,6 @@ if (isset($_GET['delete'])) {
                 </nav>
             </div>
 
-
-
-            
             <!-- Nội dung chính -->
             <div class="col-lg-10" id="main-content">
 
@@ -168,6 +165,7 @@ if (isset($_GET['delete'])) {
 
                                     <tbody>
                                         <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+                                            <!-- xuất ra các phòng đc đặt với vòng lặp  -->
                                             <input type="hidden" <?php echo htmlspecialchars($row['id']); ?>>
                                             <th scope="col"><?php echo htmlspecialchars($row['nguoiDungTen']); ?></th>
                                             <th scope="col"><?php echo htmlspecialchars($row['email']); ?></th>
@@ -199,8 +197,19 @@ if (isset($_GET['delete'])) {
                                                 }
                                                 ?>
                                             </th>
-                                            <th scope="col"><a href="?delete=<?php echo $row['id']; ?>" onclick="return confirm('Bạn có chắc muốn hủy đặt phòng chứ ?')">Hủy</a></th>
+
+                                            <?php if ($row['trangthai'] == 1) : ?>
+                                                
+                                                <th scope="col">   <a href="user_checkin_out.php" class="btn btn-primary btn-sm">Check in & Check out</a> </th>
+
+                                            <?php else : ?>
+
+                                                <th scope="col"> <a href="?delete=<?php echo $row['id']; ?>" onclick="return confirm('Bạn có chắc muốn hủy đặt phòng chứ ?')" class="btn btn-danger btn-sm">Hủy</a></th>
+
+                                            <?php endif; ?>
+
                                     </tbody>
+
                                 <?php endwhile; ?>
 
                                 </table>

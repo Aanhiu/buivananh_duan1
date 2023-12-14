@@ -2,7 +2,6 @@
         <h3 class="mb-0 h-font">AYBITI WEB ADMIN </h3>
         <a href="logout.php" class="btn btn-light btn-sm ">Logout</a>
     </div>
-
     <div class="col-lg-2 bg-warning border-top border-3 border-secondary" id="dashboard-menu">
 
         <nav class="navbar navbar-expand-lg ">
@@ -31,18 +30,25 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/admin/nguoidung.php">Quản lí người dùng</a>
-                        </li>
-
-                        <li class="nav-item">
                             <a class="nav-link text-white" href="/admin/adminbook.php">Quản lí Booking</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Quản lí Hóa đơn</a>
+                            <a class="nav-link text-white" href="xuli_checkuser.php">Quản lí Check in & Check out</a>
                         </li>
 
-                       
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="timkiem_donphong.php">Tìm kiếm Đơn Phòng Check in & Check out</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Quản lí lịch sử đặt phòng</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/admin/nguoidung.php">Quản lí người dùng</a>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/index.php">Về Trang chủ</a>
                         </li>
@@ -52,7 +58,6 @@
                         </li>
                       
                     </ul>
-
                 </div>
         </nav>
     </div>

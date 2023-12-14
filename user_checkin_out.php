@@ -1,0 +1,2 @@
+<h1>from hiện thông tin lên và có nút check in check out trong from check in check out của admin thêm chức năng tìm kiếm đơn đặt phong theo sdt người đặt để xác nhận check in check out</h1>
+<h1>đây la check in check out lam xu li check in check out khi check out xong sẽ mất phòng đi ở hoa đơn xuất vào lịch sử đặt phòng với trạng thái đã hoàn thành đat phòng </h1>

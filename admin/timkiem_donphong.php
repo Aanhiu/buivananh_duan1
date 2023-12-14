@@ -20,50 +20,52 @@ if (isset($_GET['delete'])) {
     mysqli_stmt_bind_param($deleteStmt, "i", $id);
 
     if (mysqli_stmt_execute($deleteStmt)) {
-        echo "<script>alert('Hủy đặt phòng thành công của đơn đặt phòng này !!!'); window.location='adminbook.php';</script>";
+        echo "<script>alert('Hủy đặt phòng thành công của đơn đặt phòng này !!!'); window.location='xuli_checkuser.php';</script>";
     } else {
-        echo "<script>alert('Hủy đặt phòng thành công của đơn đặt phòng này thất bại !!! ); window.location='adminbook.php';</script>";
+        echo "<script>alert('Hủy đặt phòng thành công của đơn đặt phòng này thất bại !!! ); window.location='xuli_checkuser.php';</script>";
     }
 }
 // Truy vấn thông tin đặt phòng
 // Truy vấn thông tin đặt phòng cho tất cả người dùng
+
 $query = "SELECT nguoi_dung.name AS nguoiDungTen, nguoi_dung.email, nguoi_dung.sdt, nguoi_dung.diachi, nguoi_dung.cmnd, 
           phong.name AS tenPhong, phong.loaiphong_id, phong.image, phong.dichvu, dat_phong.id,
           dat_phong.NgayBatDau, dat_phong.NgayKetThuc, dat_phong.ghichu, dat_phong.tongTien, dat_phong.phuongthuc, dat_phong.trangthai 
           FROM dat_phong 
           JOIN nguoi_dung ON dat_phong.nguoidung_id = nguoi_dung.id 
-          JOIN phong ON dat_phong.phong_id = phong.id WHERE dat_phong.trangthai = 0
+          JOIN phong ON dat_phong.phong_id = phong.id WHERE dat_phong.trangthai = 1
           ORDER BY dat_phong.id DESC";
 
 $result = mysqli_query($conn, $query);
 
-// xu li xac nhan dat phong 
-if (isset($_GET['confirm'])) {
-    $id = $_GET['confirm'];
-
-    // Cập nhật trạng thái đặt phòng thành "Đã xác nhận"
-    $updateQuery = "UPDATE dat_phong SET trangthai = 1 WHERE id = ?";
-    $updateStmt = mysqli_prepare($conn, $updateQuery);
-    mysqli_stmt_bind_param($updateStmt, "i", $id);
-    mysqli_stmt_execute($updateStmt);
-
-    if (mysqli_stmt_affected_rows($updateStmt) > 0) {
-        echo "<script>alert('Đặt phòng đã được xác nhận'); window.location='adminbook.php';</script>";
-    } else {
-        echo "<script>alert('Có lỗi xảy ra khi xác nhận đặt phòng'); window.location='adminbook.php';</script>";
-    }
 
 
+// xu li check in check out
 
-    // Khi admin nhấn nút xác nhận
-    if (isset($_GET['confirm'])) {
-        $id = $_GET['confirm'];
 
-        // Chuyển hướng đến xuli_checkuser.php với ID đặt phòng
-        header("Location: xuli_checkuser.php?confirm_id=$id");
-        exit;
-    }
-}
+// xu li tim kiem don dat phong theo so dien thoai 
+
+// if (isset($_GET['sdt']) && $_GET['sdt'] != '') {
+//     $sdt = $_GET['sdt'];
+
+//     // Tạo truy vấn SQL
+//     $query = "SELECT * FROM dat_phong WHERE sdt = ? ORDER BY id DESC";
+    
+//     // Chuẩn bị và thực hiện truy vấn
+//     $stmt = mysqli_prepare($conn, $query);
+//     mysqli_stmt_bind_param($stmt, "s", $sdt);
+//     mysqli_stmt_execute($stmt);
+//     $tim = mysqli_stmt_get_result($stmt);
+    
+//     // Kết quả sẽ được sử dụng để hiển thị trong bảng bên dưới
+// } else {
+//     // Truy vấn mặc định nếu không có tìm kiếm
+//     $query = "SELECT * FROM dat_phong ORDER BY id DESC";
+//     $tim = mysqli_query($conn, $query);
+// }
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +73,7 @@ if (isset($_GET['confirm'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Đặt Phòng</title>
+    <title>Admin - Tìm kiếm Quản lí check in check out</title>
     <link rel="stylesheet" href="/admin/css/style.css">
     <?php
     require "/buivananh_duan1/admin/inc/link_admin.php";
@@ -84,7 +86,17 @@ if (isset($_GET['confirm'])) {
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
-                <h3 class="mb-4">Admin - Quản lí đặt phòng</h3>
+                <h3 class="mb-4">Admin - Tìm kiếm Quản lí check in check out </h3>
+
+                <h2>Tìm kiếm đơn đặt phòng làm sau </h2>
+                <form action="timkiem_donphong.php" method="GET">
+                    <input type="number" placeholder="Nhập Số điện thoại người đặt phòng để tìm đơn">
+                    <input type="submit" value="Tìm thông tin đặt phòng">
+
+                </form>
+
+               
+
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
                         <!-- bang hien thong tin lien he-->
@@ -102,8 +114,8 @@ if (isset($_GET['confirm'])) {
                                         <th scope="col">Loại phòng</th>
                                         <th scope="col">Ảnh phòng </th>
                                         <th scope="col">Dịch vụ</th>
-                                        <th scope="col">Check in</th>
-                                        <th scope="col">Check out</th>
+                                        <th scope="col">Check in thêm nút xác nhận check in ở dưới</th>
+                                        <th scope="col">Check out thêm nút xác nhận check out ở dưới </th>
                                         <th scope="col">Tổng Tiền</th>
                                         <th scope="col">Ghi chú</th>
                                         <th scope="col">Hình Thức Thanh toán</th>
@@ -112,6 +124,7 @@ if (isset($_GET['confirm'])) {
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php //while ($row = mysqli_fetch_assoc($tim)) : ?>
                                     <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                                         <tr>
                                             <th scope="col"><?php echo $row['id']; ?></th>
@@ -130,6 +143,7 @@ if (isset($_GET['confirm'])) {
                                             <!-- number_format($row['tongTien'], 0, '.', ','); ?> -->
                                             <th scope="col"><?php echo $row['ghichu']; ?></th>
                                             <th scope="col"><?php echo $row['phuongthuc']; ?></th>
+
                                             <th scope="col"> <?php
                                                                 // xuất trạng thái ra cho người dùng 
                                                                 if ($row['trangthai'] == 0) {
@@ -138,22 +152,23 @@ if (isset($_GET['confirm'])) {
                                                                     echo "Đã xác nhận";
                                                                 } elseif ($row['trangthai'] == 2) {
                                                                     echo "Đã hủy";
+                                                                } elseif ($row['trangthai'] == 3) {
+                                                                    echo "Đã Hoàn Thành Đặt phòng";
                                                                 } else {
                                                                     echo "Không xác định";
                                                                 }
                                                                 ?></th>
                                             <td>
-                                                <a href="?delete=<?php echo $row['id']; ?>" onclick="return confirm('Bạn có chắc muốn hủy đặt phòng này không !!!')" class="btn btn-danger btn-sm">Hủy Đặt</a> <br>
+                                                <a href="?delete=<?php echo $row['id']; ?>" onclick="return confirm('Bạn có chắc muốn hủy đặt phòng này không?')" class="btn btn-danger btn-sm">Hủy Đặt</a> <br>
                                                 <!-- Hiển thị nút "Xác nhận" chỉ khi trạng thái là "Chờ xác nhận" -->
-                                                <?php if ($row['trangthai'] == 0) : ?>
-                                                    <a href="?confirm=<?php echo $row['id']; ?>" onclick="return confirm('Bạn có chắc muốn xác nhận đặt chứ  ?')" class="btn btn-success btn-sm">Xác nhận Đặt</a>
-                                                <?php endif; ?>
+
 
                                                 <!-- Luôn hiển thị nút "Hủy" bất kể trạng thái -->
 
                                             </td>
                                         </tr>
                                     <?php endwhile; ?>
+                                    <?php //endwhile; ?>
                                 </tbody>
                             </table>
                         </div>

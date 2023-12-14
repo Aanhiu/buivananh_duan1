@@ -145,7 +145,7 @@ danhxuat();
                                                 <td><?php echo $user_data['cmnd']; ?></td>
                                                 <td><?php echo $user_data['datetimeacc']; ?></td>
 
-                                                <td><a href="user_cntaikhoan.php?id=<?php echo $user_data['id'];?>">Chỉnh sửa</a>.</td>
+                                                <td><a href="user_cntaikhoan.php?id=<?php echo $user_data['id'];?>" class="btn btn-danger btn-sm">Chỉnh sửa</a>.</td>
                                             </tr>
                                         <?php else : ?>
                                             <h6>Không thể hiển thị thông tin người dùng</h6>
