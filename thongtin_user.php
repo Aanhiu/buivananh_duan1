@@ -1,11 +1,7 @@
 <?php
 
-if (isset($_POST['dangxuat'])) {
-    session_start();
-    session_destroy(); // Xóa tất cả session
-    header("Location: index.php"); // Chuyển hướng người dùng về trang chủ
-    exit;
-}
+require_once "/buivananh_duan1/admin/inc/db_config.php";
+dangxuat();
 
 ?>
 
@@ -80,6 +76,10 @@ if (isset($_POST['dangxuat'])) {
 
                                 <li class="nav-item">
                                     <a class="nav-link text-white" href="user_hoadon.php">Hóa đơn đặt phòng</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="#">Check in check out</a>
                                 </li>
 
                                 <li class="nav-item">

@@ -40,7 +40,7 @@ if (isset($_GET['delete'])) {
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
                         <!-- bang hien thong tin lien he-->
-                        <div class="table-responsive-md" style="height:450px; overflow-y:scroll;">
+                        <div class="table-responsive-md" style="height:700px; overflow-y:scroll;">
                             <table class="table table-hover border">
                                 <thead class="sticky-top">
                                     <tr class="bg-dark text-light">

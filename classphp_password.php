@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 require "/buivananh_duan1/admin/inc/db_config.php";
 require("PHPMailer-master/src/PHPMailer.php");
 require("PHPMailer-master/src/SMTP.php");

@@ -111,10 +111,17 @@
     // $isLoggedIn 
 
     ?>
+    <style>
+        .nav-link :hover{
+            color: red;
+
+        }
+      
+    </style>
   <!-- menu-->
   <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm -stickky-top">
       <div class="container-fluid">
-          <a class="navbar-brand me-5 fw-bold fs-3 h-font " href="index.php">AYBITI</a>
+          <a class="navbar-brand me-5 fw-bold fs-3 h-font " href="index.php">BUIVANANH</a>
           <button class="navbar-toggler shodow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
           </button>
@@ -286,3 +293,6 @@
   </div>
 
   <!-- end modal hiện đăng ký -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- Initialize Swiper -->

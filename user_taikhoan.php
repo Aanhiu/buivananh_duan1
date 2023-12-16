@@ -1,7 +1,7 @@
 <?php
 require_once "/buivananh_duan1/admin/inc/essential.php";
 require_once "/buivananh_duan1/admin/inc/db_config.php";
-danhxuat();
+dangxuat();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,6 +89,10 @@ danhxuat();
                                 <li class="nav-item">
                                     <a class="nav-link text-white" href="user_hoadon.php">Hóa đơn đặt phòng</a>
                                 </li>
+
+                                <!-- <li class="nav-item">
+                                    <a class="nav-link text-white" href="user_checkin_out.php">Check in check out</a>
+                                </li> -->
                                 <li class="nav-item">
                                     <a class="nav-link text-white" href="user_lichsu.php">Lịch sử đặt phòng</a>
                                 </li>

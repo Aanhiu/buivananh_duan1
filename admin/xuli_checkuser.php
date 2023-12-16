@@ -1,29 +1,30 @@
 <?php
-require_once "/buivananh_duan1/admin/inc/essential.php";
 require_once "/buivananh_duan1/admin/inc/db_config.php";
+require_once "/buivananh_duan1/admin/inc/essential.php";
+
 adminLogin();
 // chức năng xóa đặt phòng
-if (isset($_GET['delete'])) {
-    // Lấy ID đặt phòng cần hủy
-    $id = $_GET['delete'];
+// if (isset($_GET['delete'])) {
+//     // Lấy ID đặt phòng cần hủy
+//     $id = $_GET['delete'];
 
-    // Thực hiện cập nhật trạng thái phòng bằng 0
-    $updateQuery = "UPDATE phong SET trangthai = 0 WHERE id IN (SELECT phong_id FROM dat_phong WHERE id = ?)";
-    $updateStmt = mysqli_prepare($conn, $updateQuery);
-    mysqli_stmt_bind_param($updateStmt, "i", $id);
-    mysqli_stmt_execute($updateStmt);
+//     // Thực hiện cập nhật trạng thái phòng bằng 0
+//     $updateQuery = "UPDATE phong SET trangthai = 0 WHERE id IN (SELECT phong_id FROM dat_phong WHERE id = ?";
+//     $updateStmt = mysqli_prepare($conn, $updateQuery);
+//     mysqli_stmt_bind_param($updateStmt, "i", $id);
+//     mysqli_stmt_execute($updateStmt);
 
-    // Sau khi cập nhật trạng thái phòng, thực hiện xóa đặt phòng
-    $deleteQuery = "DELETE FROM `dat_phong` WHERE `id`=?";
-    $deleteStmt = mysqli_prepare($conn, $deleteQuery);
-    mysqli_stmt_bind_param($deleteStmt, "i", $id);
+//     // Sau khi cập nhật trạng thái phòng, thực hiện xóa đặt phòng
+//     $deleteQuery = "DELETE FROM `dat_phong` WHERE `id`=?";
+//     $deleteStmt = mysqli_prepare($conn, $deleteQuery);
+//     mysqli_stmt_bind_param($deleteStmt, "i", $id);
 
-    if (mysqli_stmt_execute($deleteStmt)) {
-        echo "<script>alert('Hủy đặt phòng thành công của đơn đặt phòng này !!!'); window.location='xuli_checkuser.php';</script>";
-    } else {
-        echo "<script>alert('Hủy đặt phòng thành công của đơn đặt phòng này thất bại !!! ); window.location='xuli_checkuser.php';</script>";
-    }
-}
+//     if (mysqli_stmt_execute($deleteStmt)) {
+//         echo "<script>alert('Hủy đặt phòng thành công của đơn đặt phòng này !!!'); window.location='xuli_checkuser.php';</script>";
+//     } else {
+//         echo "<script>alert('Hủy đặt phòng thành công của đơn đặt phòng này thất bại !!! ); window.location='xuli_checkuser.php';</script>";
+//     }
+// }
 // Truy vấn thông tin đặt phòng
 // Truy vấn thông tin đặt phòng cho tất cả người dùng
 
@@ -32,7 +33,7 @@ if (isset($_GET['delete'])) {
 // Xử lý xác nhận check-in
 if (isset($_GET['confirm_checkin'])) {
     $id = $_GET['confirm_checkin'];
-    $updateQuery = "UPDATE dat_phong SET trangthai = 3 WHERE id = ?"; // Trạng thái "Đã Check-in"
+    $updateQuery = "UPDATE dat_phong SET trangthai = 5 WHERE id = ?"; // Trạng thái "Đã Check-in"
     $stmt = mysqli_prepare($conn, $updateQuery);
     mysqli_stmt_bind_param($stmt, "i", $id);
     mysqli_stmt_execute($stmt);
@@ -41,11 +42,13 @@ if (isset($_GET['confirm_checkin'])) {
 // Xử lý xác nhận check-out
 if (isset($_GET['confirm_checkout'])) {
     $id = $_GET['confirm_checkout'];
-    $updateQuery = "UPDATE dat_phong SET trangthai = 4 WHERE id = ?"; // Trạng thái "Đã Check-out"
+    $updateQuery = "UPDATE dat_phong SET trangthai = 7 WHERE id = ?"; // Trạng thái "Đã Check-out"
     $stmt = mysqli_prepare($conn, $updateQuery);
     mysqli_stmt_bind_param($stmt, "i", $id);
     mysqli_stmt_execute($stmt);
 }
+
+
 
 // Xử lý xóa đặt phòng
 if (isset($_GET['delete'])) {
@@ -68,11 +71,10 @@ $query = "SELECT nguoi_dung.name AS nguoiDungTen, nguoi_dung.email, nguoi_dung.s
           dat_phong.NgayBatDau, dat_phong.NgayKetThuc, dat_phong.ghichu, dat_phong.tongTien, dat_phong.phuongthuc, dat_phong.trangthai 
           FROM dat_phong 
           JOIN nguoi_dung ON dat_phong.nguoidung_id = nguoi_dung.id 
-          JOIN phong ON dat_phong.phong_id = phong.id
-          ORDER BY dat_phong.id DESC";
+          JOIN phong ON dat_phong.phong_id = phong.id WHERE dat_phong.trangthai != 8
+          ORDER BY dat_phong.id DESC  ";
 
 $result = mysqli_query($conn, $query);
-
 
 ?>
 <!DOCTYPE html>
@@ -159,22 +161,28 @@ $result = mysqli_query($conn, $query);
                                                                 } elseif ($row['trangthai'] == 6) {
                                                                     echo "Đã xác nhận check out";
                                                                 } elseif ($row['trangthai'] == 7) {
-                                                                    echo "Đã hoàn thành đơn đặt phòng";
+                                                                    echo "Đã hoàn thành đơn đặt phòng ";
+                                                                } elseif ($row['trangthai'] == 8) {
+                                                                    echo "Đã hoàn thành đơn đặt phòng và Đã Hiển thị Lại ROOM";
                                                                 } else {
                                                                     echo "Không xác định";
                                                                 }
                                                                 ?>
-
-
+                                                                
                                             </th>
 
                                             <td>
-                                                <?php if ($row['trangthai'] == 5) : ?>
+                                                <?php if ($row['trangthai'] == 3) : ?>
                                                     <a href="?confirm_checkin=<?php echo $row['id']; ?>" class="btn btn-success btn-sm">Xác Nhận Check-In</a>
-                                                <?php elseif ($row['trangthai'] == 6) : ?>
-                                                    <a href="?confirm_checkout=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm">Xác Nhận Check-Out</a>
+
+                                                <?php elseif ($row['trangthai'] == 5) : ?>
+
+                                                    <a href="?confirm_checkout=<?php echo $row['id']; ?>" class="btn btn-success btn-sm">Xác Nhận Check-Out</a>
+
                                                 <?php endif; ?>
                                                 <a href="?delete=<?php echo $row['id']; ?>" onclick="return confirm('Bạn có chắc muốn hủy đặt phòng này không?')" class="btn btn-danger btn-sm">Hủy Đặt</a>
+
+                                                
                                             </td>
                                         </tr>
                                     <?php endwhile; ?>

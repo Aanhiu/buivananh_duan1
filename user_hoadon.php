@@ -1,6 +1,6 @@
 <?php
 require_once "/buivananh_duan1/admin/inc/db_config.php";
-danhxuat();
+dangxuat();
 
 // xuat thong tin dat phong thong tin nguoi dung va thông tin phòng phong da dat gom cả thông tin đã điền ở from 
 // xuat thong tin va check in check out cho người dùng 
@@ -12,7 +12,7 @@ $xuatThongTin = "SELECT nguoi_dung.name AS nguoiDungTen, nguoi_dung.email, nguoi
         FROM dat_phong 
         JOIN nguoi_dung ON dat_phong.nguoidung_id = nguoi_dung.id 
         JOIN phong ON dat_phong.phong_id = phong.id 
-        WHERE nguoi_dung.id = ?";
+        WHERE nguoi_dung.id = ? AND dat_phong.trangthai !=8 ";
 
 //
 $stmt = mysqli_prepare($conn, $xuatThongTin);
@@ -108,6 +108,10 @@ if (isset($_GET['delete'])) {
                                 <li class="nav-item">
                                     <a class="nav-link text-white" href="user_hoadon.php">Hóa đơn đặt phòng</a>
                                 </li>
+
+                                <!-- <li class="nav-item">
+                                    <a class="nav-link text-white" href="user_checkin_out.php">Check in check out</a>
+                                </li> -->
                                 <li class="nav-item">
                                     <a class="nav-link text-white" href="user_lichsu.php">Lịch sử đặt phòng</a>
                                 </li>
@@ -184,21 +188,33 @@ if (isset($_GET['delete'])) {
                                             <th scope="col"><?php echo htmlspecialchars($row['phuongthuc']); ?></th>
                                             <th scope="col">
 
-                                                <?php
-                                                // xuất trạng thái ra cho người dùng 
-                                                if ($row['trangthai'] == 0) {
-                                                    echo "Chờ xác nhận";
-                                                } elseif ($row['trangthai'] == 1) {
-                                                    echo "Đã xác nhận";
-                                                } elseif ($row['trangthai'] == 2) {
-                                                    echo "Đã hủy";
-                                                } else {
-                                                    echo "Không xác định";
-                                                }
-                                                ?>
+                                            <?php
+                                                                // xuất trạng thái ra cho người dùng 
+                                                                if ($row['trangthai'] == 0) {
+                                                                    echo "Chờ xác nhận";
+                                                                } elseif ($row['trangthai'] == 1) {
+                                                                    echo "Đã xác nhận";
+                                                                } elseif ($row['trangthai'] == 2) {
+                                                                    echo "Đã hủy";
+                                                                } elseif ($row['trangthai'] == 3) {
+                                                                    echo "Đã Check in";
+                                                                } elseif ($row['trangthai'] == 4) {
+                                                                    echo "Đã check out";
+                                                                } elseif ($row['trangthai'] == 5) {
+                                                                    echo "Đã xác nhận check in ";
+                                                                } elseif ($row['trangthai'] == 6) {
+                                                                    echo "Đã xác nhận check out";
+                                                                } elseif ($row['trangthai'] == 7) {
+                                                                    echo "Đã hoàn thành đơn đặt phòng & chưa hiển thị lại ROOM";
+                                                                } elseif ($row['trangthai'] == 8) {
+                                                                    echo "Đã hoàn thành đơn đặt phòng và Đã Hiển thị Lại ROOM";
+                                                                } else {
+                                                                    echo "Không xác định";
+                                                                }
+                                                                ?>
                                             </th>
 
-                                            <?php if ($row['trangthai'] == 1) : ?>
+                                            <?php if ($row['trangthai'] !=0) : ?>
                                                 
                                                 
                                                 <th scope="col"> <a href="user_checkin_out.php?id=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm">Check in & Check out</a>

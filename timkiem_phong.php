@@ -18,7 +18,7 @@ if (isset($_POST['timkiem'])) {
     //$query = "SELECT * FROM phong WHERE loaiphong_id = $loaiPhong";
     $query = "SELECT phong.*, loai_phong.name AS ten_loai_phong FROM phong
               INNER JOIN loai_phong ON phong.loaiphong_id = loai_phong.id
-              WHERE phong.loaiphong_id = $loaiPhong";
+              WHERE phong.loaiphong_id = $loaiPhong AND trangthai = 0";
     // tạo 1 biến mới truy vấn và chứa kểt quả 
     $result = mysqli_query($conn, $query);
 
@@ -27,7 +27,6 @@ if (isset($_POST['timkiem'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,7 +63,7 @@ if (isset($_POST['timkiem'])) {
 
         </p>
     </div>
-    <div class="container-fluid">
+    <div >
         <div class="row ">
             <div class="col-lg-3 col-md-12 mb-lg-0 mb-4 ps-4">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -76,16 +75,7 @@ if (isset($_POST['timkiem'])) {
                             </button>
 
                             <div class="collapse navbar-collapse flex-column align-items-stretch mt-2" id="loc">
-                                <div class="border bg-light p-3 rounded mb-3">
-                                    <h5 class="mb-3" style="font-size: 18px;">Kiểm tra phòng có và đặt ngày :</h5>
-                                    <label  for="" class="form-label">Ngày đi</label>
-                                    <input required type="date" class="form-control shadow-none">
-                                    <label for="" class="form-label">Ngày đến</label>
-                                    <input required type="date" class="form-control shadow-none">
-                                </div>
-
-
-
+                             
                                 <div class="border bg-light p-3 rounded mb-3">
                                     <label class="form-label" style="font-weight: 500;">Chọn loại phòng</label>
                                     <select name="loaiphong_id" class="form-control shadow" required>
@@ -96,20 +86,11 @@ if (isset($_POST['timkiem'])) {
                                     </select>
                                 </div>
 
-                                <div  class="border bg-light p-3 rounded mb-3">
-                                    <label class="form-label" style="font-weight: 500;" >Chọn số người</label>
-                                    <select class="form-control shadow" required>
-                                        <option  selected>Chọn số người</option>
-                                        <option value="1">2 người lớn 2 trẻ em</option>
-                                    </select>
-                                </div>
-
                                 <button type="submit" name="timkiem">Lọc Phòng</button>
                             </div>
                     </div>
                     </form>
                 </nav>
-
             </div>
             <!-- bat dau form xuat phong-->
 
@@ -191,10 +172,8 @@ if (isset($_POST['timkiem'])) {
             </div>
         </div>
         <!-- end form xuat phong-->
-
     </div>
     </div>
     <?php require "./inc/footer.php" ?>
 </body>
-
 </html>

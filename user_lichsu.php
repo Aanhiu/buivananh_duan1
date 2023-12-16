@@ -1,10 +1,46 @@
 <?php
-if (isset($_POST['dangxuat'])) {
-    session_start();
-    session_destroy(); // Xóa tất cả session
-    header("Location: index.php"); // Chuyển hướng người dùng về trang chủ
-    exit;
+ require_once "/buivananh_duan1/admin/inc/db_config.php";
+ dangxuat();
+
+$userId = $_SESSION['user_id']; // lấy id người dùng đã đăng nhập đã lưu ở user_id
+// truy vấn
+$xuatThongTin = "SELECT nguoi_dung.name AS nguoiDungTen, nguoi_dung.email, nguoi_dung.sdt, nguoi_dung.diachi, nguoi_dung.cmnd, 
+        phong.name AS tenPhong, phong.loaiphong_id, phong.image, phong.dichvu, dat_phong.id,
+        dat_phong.NgayBatDau, dat_phong.NgayKetThuc, dat_phong.ghichu, dat_phong.tongTien, dat_phong.phuongthuc, dat_phong.trangthai 
+        FROM dat_phong 
+        JOIN nguoi_dung ON dat_phong.nguoidung_id = nguoi_dung.id 
+        JOIN phong ON dat_phong.phong_id = phong.id 
+        WHERE nguoi_dung.id = ? AND dat_phong.trangthai = 8 ";
+
+//
+$stmt = mysqli_prepare($conn, $xuatThongTin);
+mysqli_stmt_bind_param($stmt, "i", $userId); // xuất theo các thông tin đặt theoo user_id người dùng đă 
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+
+// chức năng xóa đặt phòng
+if (isset($_GET['delete'])) {
+    // Lấy ID đặt phòng cần hủy
+    $id = $_GET['delete'];
+
+    // Thực hiện cập nhật trạng thái phòng bằng 0
+    $updateQuery = "UPDATE phong SET trangthai = 0 WHERE id IN (SELECT phong_id FROM dat_phong WHERE id = ?)";
+    $updateStmt = mysqli_prepare($conn, $updateQuery);
+    mysqli_stmt_bind_param($updateStmt, "i", $id);
+    mysqli_stmt_execute($updateStmt);
+
+    // Sau khi cập nhật trạng thái phòng, thực hiện xóa đặt phòng
+    $deleteQuery = "DELETE FROM `dat_phong` WHERE `id`=?";
+    $deleteStmt = mysqli_prepare($conn, $deleteQuery);
+    mysqli_stmt_bind_param($deleteStmt, "i", $id);
+
+    if (mysqli_stmt_execute($deleteStmt)) {
+        echo "<script>alert('Hủy đặt phòng thành công'); window.location='user_hoadon.php';</script>";
+    } else {
+        echo "<script>alert('Hủy đặt phòng thất bại !!! ); window.location='user_hoadon.php';</script>";
+    }
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -49,7 +85,7 @@ if (isset($_POST['dangxuat'])) {
         </div>
     </div>
     <!-- end sile ảnh -->
-    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">Lịch sử đặt phòngt</h2>
+    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">Lịch sử đặt phòng</h2>
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
@@ -76,14 +112,15 @@ if (isset($_POST['dangxuat'])) {
                                 <li class="nav-item">
                                     <a class="nav-link text-white" href="user_hoadon.php">Hóa đơn đặt phòng</a>
                                 </li>
+                                <!-- <li class="nav-item">
+                                    <a class="nav-link text-white" href="user_checkin_out.php">Check in check out</a>
+                                </li> -->
 
                                 <li class="nav-item">
                                     <a class="nav-link text-white" href="user_lichsu.php">Lịch sử đặt phòng</a>
                                 </li>
 
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="user_binhluan.php">Bình luận đã viết</a>
-                                </li>
+                               
 
                                 <li class="nav-item">
                                     <a class="nav-link text-white" href="phong.php">Xem thêm phòng</a>
@@ -108,32 +145,105 @@ if (isset($_POST['dangxuat'])) {
             <!-- Nội dung chính -->
             <div class="col-lg-10" id="main-content">
 
-                <div class="card border-0 shadow-sm mb-4">
-                    <!-- (Nội dung bảng thông tin người dùng) -->
-                    <div class="card border-0 shadow-sm mb-4">
-                        <div class="card-body">
-                            <!-- bang hien thong tin lien he-->
-                            <div class="table-responsive-md" style="height:450px; overflow-y:scroll;">
-                                <table class="table table-hover border">
-                                    <thead class="sticky-top">
-                                        <tr class="bg-dark text-light">
-                                            <th scope="col">Id</th>
-                                            <th scope="col">Tên</th>
+<div class="card border-0 shadow-sm mb-4">
+    <!-- (Nội dung bảng thông tin người dùng) -->
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body">
+            <!-- bang hien thong tin lien he-->
+            <div class="table-responsive-md" style="height:450px; overflow-y:scroll;">
 
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                <table class="table table-hover border">
+                    <thead class="sticky-top">
+                        <tr class="bg-dark text-light">
+                            <!-- <th scope="col">id</th> -->
+                            <th scope="col">Tên</th>
+                            <th scope="col">SDT</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Địa Chỉ</th>
+                            <th scope="col">CMND</th>
+                            <th scope="col">Tên Phòng</th>
+                            <th scope="col">Loại phòng</th>
+                            <th scope="col">Ảnh phòng </th>
+                            <th scope="col">Dịch vụ</th>
+                            <th scope="col">Check in</th>
+                            <th scope="col">Check out</th>
+                            <th scope="col">Tổng Tiền</th>
+                            <th scope="col">Ghi chú</th>
+                            <th scope="col">Hình Thức Thanh toán</th>
+                            <th scope="col">Trạng thái</th>
+                            <th scope="col">hành động</th>
+                        </tr>
+                    </thead>
 
-                                        <h1>xuất Lịch sử đặt phòng và chức năng xóa lich su </h1>
+                    <tbody>
+                        <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+                            <!-- xuất ra các phòng đc đặt với vòng lặp  -->
+                            <input type="hidden" <?php echo htmlspecialchars($row['id']); ?>>
+                            <th scope="col"><?php echo htmlspecialchars($row['nguoiDungTen']); ?></th>
+                            <th scope="col"> <?php echo htmlspecialchars($row['email']); ?> </th>
+                            <th scope="col"><?php echo htmlspecialchars($row['sdt']); ?></th>
+                            <th scope="col"><?php echo htmlspecialchars($row['diachi']); ?></th>
+                            <th scope="col"><?php echo htmlspecialchars($row['cmnd']); ?></th>
+                            <th scope="col"><?php echo htmlspecialchars($row['tenPhong']); ?></< /th>
+                            <th scope="col"> <?php echo htmlspecialchars($row['loaiphong_id']); ?> </th>
+                            <th scope="col"><img src="<?php echo htmlspecialchars($row['image']); ?>" width="150px" height="100px"> </th>
+                            <th scope="col"><?php echo htmlspecialchars($row['dichvu']); ?></th>
+                            <th scope="col"><?php echo htmlspecialchars($row['NgayBatDau']); ?></th>
+                            <th scope="col"><?php echo htmlspecialchars($row['NgayKetThuc']); ?></th>
+                            <th scope="col"><?php echo number_format($row['tongTien'], 0, '.', ','); ?> VNĐ</th>
+                            <!-- number_format($row['tongTien'], 0, '.', ','); ?> -->
+                            <th scope="col"><?php echo htmlspecialchars($row['ghichu']); ?></th>
+                            <th scope="col"><?php echo htmlspecialchars($row['phuongthuc']); ?></th>
+                            <th scope="col">
 
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- end bang hien thong tin lien he-->
-                        </div>
-                    </div>
-                </div>
+                            <?php
+                                        // xuất trạng thái ra cho người dùng 
+                                        if ($row['trangthai'] == 0) {
+                                            echo "Chờ xác nhận";
+                                        } elseif ($row['trangthai'] == 1) {
+                                            echo "Đã xác nhận";
+                                        } elseif ($row['trangthai'] == 2) {
+                                            echo "Đã hủy";
+                                        } elseif ($row['trangthai'] == 3) {
+                                            echo "Đã Check in";
+                                        } elseif ($row['trangthai'] == 4) {
+                                            echo "Đã check out";
+                                        } elseif ($row['trangthai'] == 5) {
+                                            echo "Đã xác nhận check in ";
+                                        } elseif ($row['trangthai'] == 6) {
+                                            echo "Đã xác nhận check out";
+                                        } elseif ($row['trangthai'] == 7) {
+                                            echo "Đã hoàn thành đơn đặt phòng";
+                                        } else {
+                                            echo "Không xác định";
+                                        }
+                                        ?>
+                            </th>
+
+                            <?php if ($row['trangthai'] == 1) : ?>
+                                
+                                
+                                <th scope="col"> <a href="user_checkin_out.php?id=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm">Check in & Check out</a>
+</th> 
+                            <?php else : ?>
+
+                                <th scope="col"> <a href="?delete=<?php echo $row['id']; ?>" onclick="return confirm('Bạn có chắc muốn xóa lịch sử đặt phòng chứ ?')" class="btn btn-danger btn-sm">Xóa Lịch sử</a></th>
+
+                            <?php endif; ?>
+
+                    </tbody>
+
+                <?php endwhile; ?>
+
+                </table>
             </div>
+            <!-- end bang hien thong tin lien he-->
+        </div>
+    </div>
+</div>
+</div>
+
+
         </div>
     </div>
 

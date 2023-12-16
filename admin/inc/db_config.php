@@ -198,7 +198,7 @@ function trangThaiPhong($trangThai)
     return $trangThai == 0 ? "Có thể thuê" : "Không thể thuê";
 } 
 
-function danhxuat(){
+function dangxuat(){
     if (isset($_POST['dangxuat'])) {
         session_start();
         session_destroy(); // Xóa tất cả session

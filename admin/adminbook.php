@@ -60,7 +60,8 @@ if (isset($_GET['confirm'])) {
         $id = $_GET['confirm'];
 
         // Chuyển hướng đến xuli_checkuser.php với ID đặt phòng
-        header("Location: xuli_checkuser.php?confirm_id=$id");
+        //header("Location: xuli_checkuser.php?confirm_id=$id");
+        header("Location: adminbook.php");
         exit;
     }
 }
@@ -88,7 +89,7 @@ if (isset($_GET['confirm'])) {
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
                         <!-- bang hien thong tin lien he-->
-                        <div class="table-responsive-md" style="height:450px; overflow-y:scroll;">
+                        <div class="table-responsive-md" style="height:700px; overflow-y:scroll;">
                             <table class="table table-hover border">
                                 <thead class="sticky-top">
                                     <tr class="bg-dark text-light">

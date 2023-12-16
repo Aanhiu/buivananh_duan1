@@ -14,9 +14,11 @@
 
 <?php
 
-  require("PHPMailer-master/src/PHPMailer.php");
-  require("PHPMailer-master/src/SMTP.php");
-  require("PHPMailer-master/src/Exception.php");
+
+require "/buivananh_duan1/PHPMailer-master/src/PHPMailer.php";
+require "/buivananh_duan1/PHPMailer-master/src/Exception.php";
+require "/buivananh_duan1/PHPMailer-master/src/SMTP.php";
+
 
     $mail = new PHPMailer\PHPMailer\PHPMailer();
     $mail->IsSMTP(); // enable SMTP
@@ -31,8 +33,8 @@
     $mail->Password = "hacrqlxgredgyqze";
     $mail->SetFrom("buianh2592003@gmail.com");
     $mail->Subject = "Aanhiu";
-    $mail->Body = "Cái địt mẹ mày";
-    $mail->AddAddress("tudvph32325@fpt.edu.vn");
+    $mail->Body = "Hi";
+    $mail->AddAddress("buianh20003@gmail.com");
 
      if(!$mail->Send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;

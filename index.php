@@ -5,8 +5,8 @@ require_once "/buivananh_duan1/admin/inc/essential.php";
 $loaiPhongQuery = "SELECT * FROM `loai_phong`";
 $loaiPhongResult = mysqli_query($conn, $loaiPhongQuery);
 
-$phongQuery = "SELECT  phong.*, loai_phong.name AS ten_loai_phong FROM phong INNER JOIN loai_phong ON phong.loaiphong_id = loai_phong.id WHERE phong.trangthai = 0 LIMIT 9";
-
+$phongQuery = "SELECT  phong.*, loai_phong.name AS ten_loai_phong FROM phong INNER JOIN loai_phong ON phong.loaiphong_id = loai_phong.id WHERE phong.trangthai = 0  ORDER BY RAND()  LIMIT 12 ";
+//  ORDER BY RAND()"; xuất ngẫu nhiên chứ ko phải theo thứ tự
 $phongResult = mysqli_query($conn, $phongQuery);
 
 // xu li book phòng khi người dùng đặt phòng thành công sẽ mất phòng đó đi trên giao diện
@@ -51,19 +51,11 @@ $phongResult = mysqli_query($conn, $phongQuery);
     <div class="container availability-form">
         <div class="row">
             <div class="col-lg-12 bg-white shadow p-4 rounded">
-                <h5 class="mb-4">Check Phòng </h5>
+                <h5 class="mb-4">Gia Đình hãy tìm loại phòng yêu thích của mình ở đây :</h5>
 
                 <form action="timkiem_phong.php" method="POST" > 
                     <div class="row align-items-end">
-                        <div class="col-lg-3 mb-3">
-                            <label class="form-label" style="font-weight: 500;">Ngày đi :</label>
-                            <input type="date" class="form-control shadow-none">
-                        </div>
-                        <div class="col-lg-3 mb-3">
-                            <label class="form-label" style="font-weight: 500;">Ngày đến :</label>
-                            <input type="date" class="form-control shadow-none">
-                        </div>
-
+                       
                         <div class="col-lg-2 mb-3">
                             <label class="form-label" style="font-weight: 500;">Chọn loại phòng</label>
                             <select name="loaiphong_id" class="form-control shadow" required>
@@ -73,14 +65,7 @@ $phongResult = mysqli_query($conn, $phongQuery);
                                 <?php endwhile; ?>
                             </select>
                         </div>
-                        <div class="col-lg-2 mb-3">
-                            <label class="form-label" style="font-weight: 500;">Chọn số người</label>
-                            <select class="form-control shadow" required>
-                                <option selected>Chọn số người</option>
-                                <option value="1">2 người lớn 2 trẻ em</option>
-                            </select>
-                        </div>
-
+                       
                         <div class="col-lg-2 mb-lg-3 mt-2  ">
                             <button type="submit" name="timkiem" class="btn text-white shadow-none custom-bg">Tìm Phòng</button>
                         </div>
@@ -98,9 +83,9 @@ $phongResult = mysqli_query($conn, $phongQuery);
     <div class="container">
         <div class="row">
             <?php while ($row = mysqli_fetch_assoc($phongResult)) : ?>
-                <div class="col-lg-4 col-md-6 my-3">
+                <div class="col-lg-3 col-md-6 my-3">
                     <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-                        <img src="<?php echo  $row['image']; ?>" style=" width: 350px; height: 300px;" alt="Ảnh đang lỗi fix sau" class="card-img-top">
+                        <img src="<?php echo  $row['image']; ?>" style=" width: 350px; height: 300px;"  class="w-100 d-block" alt="Ảnh đang lỗi fix sau" class="card-img-top">
                         <div class="card-body">
                             <h5> Tên Phòng :<?php echo $row['name']; ?> </h5>
                             <h6>Tên loại phòng :<?php echo $row['ten_loai_phong']; ?></h6>
@@ -225,7 +210,7 @@ $phongResult = mysqli_query($conn, $phongQuery);
                 <div class="swiper-slide bg-white p-4">
                     <div class="profile d-flex align-items-center p-4">
                         <img src="" alt="">
-                        <h6 class="m-0">Đỗ Trọng Bằng</h6>
+                        <h6 class="m-0">Ánh</h6>
                     </div>
                     <p>Khách sạn tuyệt lắm Tôi luôn hứng thú với việc học hỏi và chia sẻ kiến thức với mọi người. Tôi có kinh nghiệm trong lĩnh vực lập trình và công nghệ ,Tôi có kinh nghiệm trong lĩnh vực lập trình và công nghệ</p>
                     <div class="rating">
@@ -239,7 +224,7 @@ $phongResult = mysqli_query($conn, $phongQuery);
                 <div class="swiper-slide bg-white p-4">
                     <div class="profile d-flex align-items-center p-4">
                         <img src="" alt="">
-                        <h6 class="m-0">Tú</h6>
+                        <h6 class="m-0">ANH ANH ANH </h6>
                     </div>
                     <p>Tôi là một cá nhân yêu thích việc ngủ tại khách sạn này Tôi luôn hứng thú với việc học hỏi và chia sẻ kiến thức với mọi người. Tôi có kinh nghiệm trong lĩnh vực lập trình và công nghệ </p>
                     <div class="rating">

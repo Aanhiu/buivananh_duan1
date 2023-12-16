@@ -41,8 +41,15 @@
                             <a class="nav-link text-white" href="timkiem_donphong.php">Tìm kiếm Đơn Phòng Check in & Check out</a>
                         </li>
 
+                        <!-- <li class="nav-item">
+                            <a class="nav-link text-white" href="lichsu_datphong.php">Quản lí lịch sử đặt phòng</a>
+                        </li> -->
+                        
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Quản lí lịch sử đặt phòng</a>
+                            <a class="nav-link text-white" href="hienthiRoom.php">Hiển thị lại Room</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="lichsu_datphong.php">Quản lí lịch sử đặt phòng</a>
                         </li>
 
                         <li class="nav-item">

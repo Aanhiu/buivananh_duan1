@@ -113,7 +113,7 @@ if (isset($_GET['delete'])) {
                             <button type="button" class="btn btn-darks shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#add-room"><i class="bi bi-plus-square"></i>Thêm</button>
                         </div>
 
-                        <div class="table-responsive-lg" style="height: 450px; overflow-y: scroll;">
+                        <div class="table-responsive-lg" style="height: 700px; overflow-y: scroll;">
                             <table class="table table-hover border">
                                 <tr class="bg-dark text-light">
                                     <th scope="col">id</th>

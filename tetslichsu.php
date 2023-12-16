@@ -1,6 +1,6 @@
-    <?php
+<?php
     require_once "/buivananh_duan1/admin/inc/db_config.php";
-    dangxuat();
+    danhxuat();
 
     $xuatHoaDon = null;
 
@@ -14,52 +14,37 @@
                        FROM dat_phong 
                        JOIN nguoi_dung ON dat_phong.nguoidung_id = nguoi_dung.id 
                        JOIN phong ON dat_phong.phong_id = phong.id 
-                       WHERE dat_phong.id = ? AND dat_phong.trangthai != 7 ";
+                       WHERE dat_phong.id = ? AND trangthai = 7";
         $stmt = mysqli_prepare($conn, $xuatHoaDon);
         mysqli_stmt_bind_param($stmt, "i", $bookingId);
         mysqli_stmt_execute($stmt);
-        $xuat = mysqli_stmt_get_result($stmt);
-        
+        $result = mysqli_stmt_get_result($stmt);
     }
 
-    // Xử lý check-in
-    if (isset($_POST['checkin'])) {
-        $bookingId = $_POST['booking_id'];
-        // Cập nhật trạng thái sang "Chờ xác nhận check-in" (5)
-        $updateQuery = "UPDATE dat_phong SET trangthai = 3 WHERE id = ?";
-        $stmt = mysqli_prepare($conn, $updateQuery);
-        mysqli_stmt_bind_param($stmt, "i", $bookingId);
-        mysqli_stmt_execute($stmt);
-        // Chuyển hướng trang để cập nhật thông tin
-        header("Location: user_checkin_out.php?id=" . $bookingId);
-        exit();
+    // chuc nang xoa lich xu 
+    if (isset($_GET['delete'])) {
+        // Lấy ID đặt phòng cần hủy
+        $id = $_GET['delete'];
+    
+        // Thực hiện cập nhật trạng thái phòng bằng 0
+        $updateQuery = "UPDATE phong SET trangthai = 0 WHERE id IN (SELECT phong_id FROM dat_phong WHERE id = ?)";
+        $updateStmt = mysqli_prepare($conn, $updateQuery);
+        mysqli_stmt_bind_param($updateStmt, "i", $id);
+        mysqli_stmt_execute($updateStmt);
+    
+        // Sau khi cập nhật trạng thái phòng, thực hiện xóa đặt phòng
+        $deleteQuery = "DELETE FROM `dat_phong` WHERE `id`=?";
+        $deleteStmt = mysqli_prepare($conn, $deleteQuery);
+        mysqli_stmt_bind_param($deleteStmt, "i", $id);
+    
+        if (mysqli_stmt_execute($deleteStmt)) {
+            echo "<script>alert('Bạn đã xóa lịch sử thành công của đơn đặt phòng này !!!'); window.location='user_lichsubook.php';</script>";
+        } else {
+            echo "<script>alert('Bạn đã xóa lịch sử  của đơn đặt phòng này thất bại !!! ); window.location='user_lichsubook.php';</script>";
+        }
     }
 
-    // Xử lý check-out
-    if (isset($_POST['checkout'])) {
-        $bookingId = $_POST['booking_id'];
-        // Cập nhật trạng thái sang "Chờ xác nhận check-out" (6)
-        $updateQuery = "UPDATE dat_phong SET trangthai = 4 WHERE id = ?";
-        $stmt = mysqli_prepare($conn, $updateQuery);
-        mysqli_stmt_bind_param($stmt, "i", $bookingId);
-        mysqli_stmt_execute($stmt);
-        // Chuyển hướng trang để cập nhật thông tin
-        header("Location: user_checkin_out.php?id=" . $bookingId);
-        exit();
-    }
-
-    // xu li khi thanh công     // Xử lý check-out
-    if (isset($_POST['thanhcong'])) {
-        $bookingId = $_POST['booking_id'];
-        // Cập nhật trạng thái sang "Chờ xác nhận check-out" (6)
-        $updateQuery = "UPDATE dat_phong SET trangthai = 7 WHERE id = ?";
-        $stmt = mysqli_prepare($conn, $updateQuery);
-        mysqli_stmt_bind_param($stmt, "i", $bookingId);
-        mysqli_stmt_execute($stmt);
-        // Chuyển hướng trang để cập nhật thông tin
-        header("Location: user_checkin_out.php?id=" . $bookingId);
-        exit();
-    }
+   
 
 
     ?>
@@ -105,7 +90,7 @@
             </div>
         </div>
         <!-- end sile ảnh -->
-        <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">Chức năng check in & check out</h2>
+        
         <div class="container-fluid">
             <div class="row">
                 <!-- Sidebar -->
@@ -180,7 +165,7 @@
                                             <!-- Lặp để tạo nhiều hàng, dữ liệu mẫu ở đây -->
                                             <tr>
 
-                                                <?php if ($row = mysqli_fetch_assoc($xuat )) : ?>
+                                                <?php if ($row = mysqli_fetch_assoc($result)) : ?>
                                                     <td><?php echo $row['nguoiDungTen']; ?> </td>
                                                     <td><?php echo ($row['sdt']); ?></td>
                                                     <td> <?php echo ($row['email']); ?> </td>
@@ -239,8 +224,10 @@
                                                                 <button type="submit" name="thanhcong" class="btn btn-danger">Kết Thúc đặt phòng </button>
                                                             </form>
                                                         <?php endif; ?>
+                                                        <a href="?delete=<?php echo $row['id']; ?>" onclick="return confirm('Bạn có chắc muốn lịch sử đặt phòng chứ ?')" class="btn btn-danger btn-sm">Hủy Đặt</a>
                                                     <?php else : ?>
                                                         <p>Không tìm thấy thông tin đặt phòng với ID này.</p>
+                                                        
                                                     <?php endif; ?>
 
                                                     </td>

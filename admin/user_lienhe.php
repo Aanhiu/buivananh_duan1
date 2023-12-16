@@ -101,7 +101,7 @@ if (isset($_GET['del'])) {
                         <!-- end danh dau doc all & xoa all-->
 
                         <!-- bang hien thong tin lien he-->
-                        <div class="table-responsive-md" style="height:450px; overflow-y:scroll;">
+                        <div class="table-responsive-md" style="height:700px; overflow-y:scroll;">
                             <table class="table table-hover border">
                                 <thead class="sticky-top">
                                     <tr class="bg-dark text-light">

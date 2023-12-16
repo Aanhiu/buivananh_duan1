@@ -47,43 +47,7 @@ function adminLogin()
     session_regenerate_id(true);
 }
 
-// hàm upload file ảnh vào folder
-function uploadImage($image,$folder){
-    // su li anh dua vao 
-    $valid_mime = ['image/jpeg','image/png','image/webp'];
-    $img_mine = $image['type'];
 
-    if(!in_array($img_mine,$valid_mime)){
-        return 'inv_img'; // kêt thuc bang dinh dang anh ko hop le 
-    }
-    //
-    else if(($image['size']/(1024*1024))>2){
-        //
-        return 'inv_size'; // kich thuoc anh lon hon 2mb
-    }
-    else{
-        $ext = pathinfo($image['name'],PATHINFO_EXTENSION);
-        $rname = 'IMG_'.random_int(11111,99999)."$ext";
 
-        $img_path = UPLOAD_IMAGE_PATH.$folder.$rname;
-        if( move_uploaded_file($image['tmp_name'],$img_path)){
-            return $rname;
-        }
-        else{
-            return 'upd_failed';
-        }
-    }
-}
-
-// ham xoa anh 
-function deleteImage($image , $folder){
-    if(unlink(UPLOAD_IMAGE_PATH.$folder.$image)){
-        return true;
-    }
-    else{
-        return false;
-    }
-
-}
 
 

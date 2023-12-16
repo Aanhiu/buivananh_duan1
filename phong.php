@@ -53,7 +53,7 @@
                         <?php
                         require_once "/buivananh_duan1/admin/inc/db_config.php";
                         // truy vấn csdl // thuc hien INNER JOIN hien ten phong chứ ko phải hiện id as gia dinh 1 cot moi chua ten cua loai phong và dùng nó chưa tên loai phòng để xuất tên loại phòng
-                        $phongQuery = "SELECT  phong.*, loai_phong.name AS ten_loai_phong FROM phong INNER JOIN loai_phong ON phong.loaiphong_id = loai_phong.id WHERE trangthai = 0";
+                        $phongQuery = "SELECT  phong.*, loai_phong.name AS ten_loai_phong FROM phong INNER JOIN loai_phong ON phong.loaiphong_id = loai_phong.id WHERE trangthai = 0 ORDER BY RAND()";
                         // thực hiện gắn truy vấn gắn báo biến khởi tạo $phongResult
                         //mysqli_query có tác dụng trả về tập hợp dữ liệu chứa nhiều hàng dữ liệu kết hơp với mysqli_fetch_assoc lấy từng hàng dữ liệu lấy trong mysqli_query là tập hợp chứa nhiều dữ liệu 
 
