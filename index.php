@@ -14,12 +14,41 @@ $phongResult = mysqli_query($conn, $phongQuery);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang Chủ </title>
     <?php require "./inc/link.php" ?>
+    <style>
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .custom-tooltip {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+
+            /* Position the tooltip */
+            position: absolute;
+            z-index: 1;
+            top: 100%;
+            left: 50%;
+            margin-left: -60px;
+        }
+
+        .tooltip-container:hover .custom-tooltip {
+            visibility: visible;
+        }
+    </style>
 </head>
+
 <body class="gb-light">
     <?php require "./inc/header.php" ?>
     <!-- sile ảnh -->
@@ -53,9 +82,9 @@ $phongResult = mysqli_query($conn, $phongQuery);
             <div class="col-lg-12 bg-white shadow p-4 rounded">
                 <h5 class="mb-4">Gia Đình hãy tìm loại phòng yêu thích của mình ở đây :</h5>
 
-                <form action="timkiem_phong.php" method="POST" > 
+                <form action="timkiem_phong.php" method="POST">
                     <div class="row align-items-end">
-                       
+
                         <div class="col-lg-2 mb-3">
                             <label class="form-label" style="font-weight: 500;">Chọn loại phòng</label>
                             <select name="loaiphong_id" class="form-control shadow" required>
@@ -65,7 +94,7 @@ $phongResult = mysqli_query($conn, $phongQuery);
                                 <?php endwhile; ?>
                             </select>
                         </div>
-                       
+
                         <div class="col-lg-2 mb-lg-3 mt-2  ">
                             <button type="submit" name="timkiem" class="btn text-white shadow-none custom-bg">Tìm Phòng</button>
                         </div>
@@ -85,7 +114,20 @@ $phongResult = mysqli_query($conn, $phongQuery);
             <?php while ($row = mysqli_fetch_assoc($phongResult)) : ?>
                 <div class="col-lg-3 col-md-6 my-3">
                     <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-                        <img src="<?php echo  $row['image']; ?>" style=" width: 350px; height: 300px;"  class="w-100 d-block" alt="Ảnh đang lỗi fix sau" class="card-img-top">
+
+                        <img src="<?php echo  $row['image']; ?>" style=" width: 350px; height: 300px;" class="w-100 d-block" alt="Ảnh đang lỗi fix sau" class="card-img-top">
+
+                        <!-- lam chuc nang yeu thích sau -->
+                        <button class="like-button" style="position: absolute; top: 10px; right: 10px; background: none; border: none;">
+                            <div class="tooltip-container">
+                                <i class="bi bi-star-fill" style="font-size: 30px; color: gold;"></i>
+                                <span class="custom-tooltip">Thêm vào yêu thích </span>
+                            </div>
+
+                        </button>
+
+                        <!-- lam chuc nang yeu thích sau -->
+
                         <div class="card-body">
                             <h5> Tên Phòng :<?php echo $row['name']; ?> </h5>
                             <h6>Tên loại phòng :<?php echo $row['ten_loai_phong']; ?></h6>
@@ -265,4 +307,11 @@ $phongResult = mysqli_query($conn, $phongQuery);
 <!-- Initialize Swiper -->
 <script src="./pulic/js/sile_header.js"></script>
 <script src="./pulic/js/chuyen_anh.js"></script>
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
+
 </html>

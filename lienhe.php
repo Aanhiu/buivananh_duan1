@@ -22,9 +22,9 @@
         <div class="row">
 
             <div class="col-lg-6 col-md-6 mb-5 px-4">
-                <div class="bg-white rounded shadow p-4 ">
+                <div class="bg-white rounded shadow p-4  " >
                     <div class="col-lg-8 col-md-8 p-4 mg-lg-0 mb-3 bg-white rounded">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29790.497151170155!2d105.72194384933717!3d21.040201309136805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3134548cc813331b%3A0x9c7e53e5b23f1a5c!2zWHXDom4gUGjGsMahbmcsIE5hbSBU4burIExpw6ptLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1701271163328!5m2!1svi!2s" width="500" height="400"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29790.497151170155!2d105.72194384933717!3d21.040201309136805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3134548cc813331b%3A0x9c7e53e5b23f1a5c!2zWHXDom4gUGjGsMahbmcsIE5hbSBU4burIExpw6ptLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1701271163328!5m2!1svi!2s" width="500px" class="w-800 d-block" height="400"></iframe >
                     </div>
                 </div>
             </div>

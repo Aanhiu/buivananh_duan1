@@ -172,9 +172,15 @@
                       </button>
 
                   <?php else : ?>
-                      <button type="button" class="btn btn-outline-dark shadow-none">
-                          <a href="thongtin_user.php"> <i class="bi bi-person-circle"></i>Vào Trang Tài Khoản </a>
+
+                    <button type="button" class="btn ">
+                          <a style="color: red; font-size: 20px; text-decoration: none;"  href="user_yeuthich.php"> <i class="bi bi-heart"></i>Phòng yêu thích</a>
                       </button>
+
+                      <button type="button" class="btn btn-outline-dark shadow-none">
+                          <a style="text-decoration: none;" href="thongtin_user.php"> <i class="bi bi-person-circle"></i>Trang Tài Khoản </a>
+                      </button>
+
                   <?php endif; ?>
               </div>
               <!-- end đăng nhập đănng ký xem thông tin-->
