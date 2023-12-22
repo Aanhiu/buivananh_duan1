@@ -61,7 +61,7 @@ if (isset($_GET['delete'])) {
     <?php
     require "/buivananh_duan1/inc/header.php";
     ?>
-    <!-- sile ảnh -->
+    <!-- sile ảnh --> 
     <div class="container-fluid px-lg-4 mt-4 ">
         <div class="swiper swiper-container">
             <div class="swiper-wrapper">
@@ -237,9 +237,6 @@ if (isset($_GET['delete'])) {
                 </div>
             </div>
 
-
-
-
         </div>
     </div>
     <?php
@@ -252,5 +249,4 @@ if (isset($_GET['delete'])) {
 <!-- Initialize Swiper -->
 <script src="./pulic/js/sile_header.js"></script>
 <script src="./pulic/js/chuyen_anh.js"></script>
-
 </html>
